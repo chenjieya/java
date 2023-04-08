@@ -25,8 +25,5 @@ public class Test {
         default:
         System.out.println("不及格");
     }
-
-     //  2. 135语文 246数学 7玩
-
   }
 }

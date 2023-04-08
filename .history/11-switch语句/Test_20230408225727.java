@@ -8,25 +8,14 @@ public class Test {
 
     switch(achievement / 10) {
       case 6:
-        System.out.println("及格");
+        System.out.println("几个");
         break;
-        case 7:
-        System.out.println("成绩中等");
+        case (achievement>=60 && achievement<70):
+        System.out.println("成绩不及格");
         break;
-        case 8:
-        System.out.println("良好");
+        case achievement>=70 && achievement<80:
+        System.out.println("成绩不及格");
         break;
-        case 9:
-        System.out.println("优秀");
-        break;
-        case 10:
-        System.out.println("满分");
-        break;
-        default:
-        System.out.println("不及格");
     }
-
-     //  2. 135语文 246数学 7玩
-
   }
 }

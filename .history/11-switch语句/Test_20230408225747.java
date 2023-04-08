@@ -14,19 +14,8 @@ public class Test {
         System.out.println("成绩中等");
         break;
         case 8:
-        System.out.println("良好");
+        System.out.println("成绩不及格");
         break;
-        case 9:
-        System.out.println("优秀");
-        break;
-        case 10:
-        System.out.println("满分");
-        break;
-        default:
-        System.out.println("不及格");
     }
-
-     //  2. 135语文 246数学 7玩
-
   }
 }

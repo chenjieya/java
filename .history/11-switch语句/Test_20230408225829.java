@@ -22,11 +22,7 @@ public class Test {
         case 10:
         System.out.println("满分");
         break;
-        default:
-        System.out.println("不及格");
+        
     }
-
-     //  2. 135语文 246数学 7玩
-
   }
 }
