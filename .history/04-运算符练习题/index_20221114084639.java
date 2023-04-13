@@ -5,7 +5,7 @@ public class index {
         int a = 1; int b = 2;
         int c = a;
         a = b;
-        b = c; 
+        b = c; nb 
         System.out.println(a); // 2
         System.out.println(b); // 1
 
