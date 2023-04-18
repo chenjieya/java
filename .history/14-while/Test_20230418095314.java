@@ -50,16 +50,7 @@ public class Test {
        * 小明同学从A点以7km每小时的速度像B点出发
        * 哥哥从B点以18km每小时的速度向A点出发
        * A和B之间的距离是1000km
-       * 求解 小明同学和哥哥经过多少个小时相遇？
+       * 求解 小明同学和哥哥经过多少个小时相遇
        */
-      int s = 1000;
-      int xiaomingV = 7;
-      int gegeV = 18;
-      int hours = 0;
-      while(s > 0) {
-        hours ++;
-        s = s - xiaomingV * hours - gegeV * hours;
-      }
-      System.out.println(hours);
   }
 }

@@ -53,13 +53,5 @@ public class Test {
        * 求解 小明同学和哥哥经过多少个小时相遇？
        */
       int s = 1000;
-      int xiaomingV = 7;
-      int gegeV = 18;
-      int hours = 0;
-      while(s > 0) {
-        hours ++;
-        s = s - xiaomingV * hours - gegeV * hours;
-      }
-      System.out.println(hours);
   }
 }

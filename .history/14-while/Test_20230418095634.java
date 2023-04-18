@@ -60,6 +60,5 @@ public class Test {
         hours ++;
         s = s - xiaomingV * hours - gegeV * hours;
       }
-      System.out.println(hours);
   }
 }
