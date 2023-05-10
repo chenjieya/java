@@ -26,12 +26,10 @@ public class Test {
     int[] n = {1,2,3,45,9};
     p.test(n);
 
-    System.out.println("----------------");
-
-    p.sortByArray(k, false);
+    p.sortByArray(k);
 
     for(int key : k) {
-      System.out.println(key);
+      System.out.println(key, true);
     }
 
   }

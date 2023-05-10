@@ -26,13 +26,7 @@ public class Test {
     int[] n = {1,2,3,45,9};
     p.test(n);
 
-    System.out.println("----------------");
-
-    p.sortByArray(k, false);
-
-    for(int key : k) {
-      System.out.println(key);
-    }
+    p.sortByArray(k);
 
   }
 }

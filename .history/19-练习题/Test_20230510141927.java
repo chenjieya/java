@@ -28,7 +28,7 @@ public class Test {
 
     System.out.println("----------------");
 
-    p.sortByArray(k, false);
+    p.sortByArray(k, true);
 
     for(int key : k) {
       System.out.println(key);
