@@ -1,0 +1,13 @@
+public class Person {
+  public void drawStart(int line, boolean flag) {
+    for(int i = line; i > 0; i--) {
+      if(!flag) {
+        for(int k = 0)
+      }
+
+      for(int j = 0; j <= i; j++) {
+        System.out.print('*');
+      }
+    }
+  }
+}
