@@ -1,5 +1,4 @@
 public class Person extends Animation {
-  public int a = 123;
   // 重载中的this，只能调用另一个重载。但是在重载的默认第一行，写了super()调用了父类的重载
   // public Person() {
   //   this(123);

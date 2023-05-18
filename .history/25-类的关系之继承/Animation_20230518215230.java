@@ -13,7 +13,7 @@ public class Animation {
   }
 
   public void sleep() {
-    this.test();  // this指向子类，子类创建的构造对象。调用子类中的方法的时候，只能调用子类的重载方法
+    this.test();  // this指向子类，子类调用的方法
     System.out.println("我是Animation类方法中的sleep方法");
   }
 
