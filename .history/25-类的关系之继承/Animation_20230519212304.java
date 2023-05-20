@@ -8,7 +8,7 @@ public class Animation {
   //   System.out.println("我是Animation中的参数a的重载");
   // }
 
-  public void eat() {
+  public void eat( {
     System.out.println("我是Animation类中的eat方法");
   }
 

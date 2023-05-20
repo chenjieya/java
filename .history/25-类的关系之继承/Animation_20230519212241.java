@@ -8,12 +8,12 @@ public class Animation {
   //   System.out.println("我是Animation中的参数a的重载");
   // }
 
-  public void eat() {
+  public void eat(int a) {
     System.out.println("我是Animation类中的eat方法");
   }
 
   public void sleep() {
-    this.eat();  // this指向子类，子类创建的构造对象。调用子类中的方法的时候，只能调用子类的重载方法
+    this.test();  // this指向子类，子类创建的构造对象。调用子类中的方法的时候，只能调用子类的重载方法
     System.out.println("我是Animation类方法中的sleep方法");
   }
 
