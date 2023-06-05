@@ -64,30 +64,19 @@
       <td>男</td>
     </tr>
   </table>
-  
   <script>
     // 获取所有符合要求的td
     const Otd = document.querySelectorAll('td[field="SEX"]');
 
-    // 遍历td，动态向td内部添加input
+    // 遍历td，向td内部添加tooltip
     for(let i = 0; i < Otd.length; i++) {
       // Otd[i].style.position = 'relative';
       // toolTip(Otd[i]);
      const oInput = document.createElement('input');
      Otd[i].appendChild(oInput);
-
-     Otd[i].addEventListener("click", function(event) {
-      event.preventDefault(); // 阻止默认行为
-    });
     }
-
-    document.addEventListener("DOMContentLoaded", function() {
-      const oInput = document.querySelector('td input');
-      console.log(oInput)
-      oInput.setAttribute("disabled", "disabled")
-    });
     
-    
+    const oInput = document.querySelector('input');
 
     // 生成tooltip并添加到dom中
     // function toolTip(dom, text='默认文字') {
