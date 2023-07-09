@@ -23,18 +23,28 @@ public class Main {
 //        t.sleep();
 
         // 2. 多态
-        Person p = new Teacher();
-        System.out.println(p.name);
-        p.eat();  // 子类重写的方法
-        p.sleep();  // 父类中的方法
+//        Person p = new Teacher();
+//        System.out.println(p.name);
+//        p.eat();  // 子类重写的方法
+//        p.sleep();  // 父类中的方法
 
         // 使用子类中的方法，向下类型转换
-        Teacher t = (Teacher) p;
-        t.teach();
-        t.sleep();
-        t.eat();
-        System.out.println(t.name);
+//        Teacher t = (Teacher) p;
+//        t.teach();
+//        t.sleep();
+//        t.eat();
+//        System.out.println(t.name);
 
+        // 3. 多态练习
+        Object o = new Teacher();
+        o.hashCode();
+        o.toString();
+        Animation a = (Animation) o;
+        a.hashCode();  // 继承自Object
+        a.toString(); // ...
+        System.out.println(a.name);  // animation类中的name属性
+        a.eat();  // 原始身份是Teacher类，被Teacher重写的方法
+        a.sleep(); // 原始类是Teacher类，Teacher类没有重写sleep，但是Teacher继承了Person，sleep被Person类重写了
 
     }
 }
