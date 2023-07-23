@@ -1,9 +1,9 @@
 package gc;
 
-public class Person {
+public class Gc {
 
 
-    public Person() {
+    public Gc() {
         System.out.println("GC对象被创建了");
     }
 
