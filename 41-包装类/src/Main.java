@@ -18,6 +18,11 @@ public class Main {
 
         Integer i1 = 1000;  // 1000
         Integer i2 = 1000;  // 1000
+        Integer i3 = 100;
+        Integer i4 = new Integer(100);
         System.out.println(i1 == i2); // false
+
+        System.out.println(i3==i4);
+        System.out.println(i4.equals(i3));
     }
 }
