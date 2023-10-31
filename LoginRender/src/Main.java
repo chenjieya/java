@@ -15,7 +15,7 @@ public class Main {
 
             while(str != null) {
                 String[] strs = str.split("-");
-                System.out.println(str);;
+                System.out.println(str);
 
                 if (strs[0].equals("alvis") && strs[1].equals("666")) {
                     System.out.println("登录成功");
