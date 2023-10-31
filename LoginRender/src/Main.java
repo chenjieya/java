@@ -27,6 +27,14 @@ public class Main {
             throw new RuntimeException(e);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }finally {
+            try {
+               if (br != null) {
+                   br.close();
+               }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
         System.out.println("登录失败");
