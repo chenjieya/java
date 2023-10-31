@@ -31,9 +31,9 @@ public class FileCopy {
             int code = fs.read(dataCount);
 
             while(code != -1) {
-                String value = new String(dataCount, 0, code);
-                System.out.println(value);
-                fis.write(value.getBytes());
+//                String value = new String(dataCount, 0, code);
+//                System.out.println(value);
+                fis.write(dataCount, 0, code);
                 code = fs.read(dataCount);
             }
 
@@ -43,17 +43,18 @@ public class FileCopy {
             throw new RuntimeException(e);
         } finally {
             try {
-
                 if (fs != null){
                     fs.close();
                 }
-
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            try{
                 if (fis != null) {
                     fis.close();
                 }
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+            }catch (IOException e) {
+                e.printStackTrace();
             }
         }
 
