@@ -6,8 +6,9 @@ public class Main {
     public static void main(String[] args) {
         File file = new File("G:\\java\\IO_FILE_TEST\\login.txt");
         BufferedReader br = null;
+        FileReader fr = null;
         try {
-            FileReader fr = new FileReader(file);
+            fr = new FileReader(file);
             br = new BufferedReader(fr);
 
             String str = br.readLine();
@@ -28,6 +29,14 @@ public class Main {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }finally {
+            try {
+                if (fr != null) {
+                    fr.close();
+                }
+            }catch (IOException e) {
+                e.printStackTrace();
+            }
+
             try {
                if (br != null) {
                    br.close();
