@@ -91,6 +91,8 @@ public class LoginFram extends FrameRule {
                 if (result.equals("登录成功")) {
                     // 进入到考试页面
                     System.out.println("登录成功");
+                    LoginFram.this.setVisible(false);
+                    new ExamFream("考试窗口");
                 } else {
                     // 弹出错误提示框
                     JOptionPane.showMessageDialog(LoginFram.this, result);
