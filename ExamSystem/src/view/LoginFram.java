@@ -1,6 +1,7 @@
 package view;
 
 import Server.LoginServe;
+import utils.MySpring;
 
 import javax.swing.*;
 import java.awt.*;
@@ -86,7 +87,7 @@ public class LoginFram extends FrameRule {
                 char[] pwd = passwordField.getPassword();
                 String password = new String(pwd);
                 // 2. 登录
-                LoginServe login = new LoginServe();
+                LoginServe login = MySpring.getBean("Server.LoginServe");
                 String result = login.loginMethod(accout, password);
                 if (result.equals("登录成功")) {
                     // 进入到考试页面
