@@ -14,7 +14,7 @@ public class QuestionDao {
 
 
     public ArrayList<Question> getPaper(int count) {
-        ArrayList<Question> paper = new ArrayList<>(question.questionBox);  // 题库
+        ArrayList<Question> paper = new ArrayList<>(question.getQuestionBox());  // 题库
 
         // 随机抽取题目，但是题目不能重复
         HashSet<Question> exam = new HashSet<>();  // 存储题目

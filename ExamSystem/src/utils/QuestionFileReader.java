@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.HashSet;
 
 public class QuestionFileReader {
-    public static HashSet<Question> questionBox = new HashSet<>();  //题库
+    private static HashSet<Question> questionBox = new HashSet<>();  //题库
 
     static {
         FileReader fr = null;
@@ -48,5 +48,9 @@ public class QuestionFileReader {
             }
 
         }
+    }
+
+    public HashSet<Question> getQuestionBox() {
+        return questionBox;
     }
 }
