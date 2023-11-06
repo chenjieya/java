@@ -312,6 +312,19 @@ public class ExamFream extends FrameRule {
 
     }
 
+    private float checkPaper() {
+        float score = 100;
+        int size = paper.size();
+        for (int i = 0; i < size; i++) {
+            String realAnswer = paper.get(i).getAnswer();
+            if (!realAnswer.equalsIgnoreCase(answer[i])) {
+                score -= (100 / size);
+            }
+        }
+
+        return score;
+    }
+
     @Override
     protected void addEventLisenter() {
 
@@ -326,7 +339,8 @@ public class ExamFream extends FrameRule {
                 prevBtn.setEnabled(false);
                 nextBtn.setEnabled(false);;
                 // 3. 计算出成绩
-
+                float score = checkPaper();
+                answerTextArea.setText("考试结束\n你的成绩是：" + score);;
             }
         });
 
