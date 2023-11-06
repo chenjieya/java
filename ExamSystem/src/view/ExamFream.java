@@ -208,13 +208,64 @@ public class ExamFream extends FrameRule {
         return count;
     }
 
+    public void restoreAnswer() {
+        String answer = this.answer[questionNum.getCurNum()];
+        if (answer == null) {
+            return;
+        }
+
+        switch(answer) {
+            case "A":
+                Abtn.setBackground(Color.YELLOW);
+                break;
+            case "B":
+                Bbtn.setBackground(Color.YELLOW);
+                break;
+            case "C":
+                Cbtn.setBackground(Color.YELLOW);
+                break;
+            case "D":
+                Dbtn.setBackground(Color.YELLOW);
+                break;
+            default:
+                this.clearBtnColor();
+                break;
+        }
+
+    }
+
     @Override
     protected void addEventLisenter() {
+
+        prevBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ExamFream.this.clearBtnColor();
+                nextBtn.setEnabled(true);;
+                ExamFream.this.disableBtn(true);
+
+                // 当前题目-1
+                int curNum = ExamFream.this.questionNum.getCurNum();
+                curNum--;
+                ExamFream.this.questionNum.setCurNum(curNum);
+
+                if (ExamFream.this.questionNum.getCurNum() == 0) { // 第一题
+                    prevBtn.setEnabled(false);
+                }
+                ExamFream.this.drawQuestion();
+                // 还原选择的答案
+                ExamFream.this.restoreAnswer();
+                curNumField.setText(questionNum.getCurNum() + 1 + "");
+                anwserCountField.setText(questionNum.getAnswerNum() + "");
+                unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
+            }
+        });
 
         nextBtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ExamFream.this.clearBtnColor();
+                prevBtn.setEnabled(true);
 
                 // 当前题目+1
                 int curNum = ExamFream.this.questionNum.getCurNum();
@@ -225,11 +276,14 @@ public class ExamFream extends FrameRule {
                     answerTextArea.setText("全部题目回答完毕，请及时提交试卷");
                     nextBtn.setEnabled(false);
 
+
                     // 让全部选项按钮颜色制空，选项不可用
                     ExamFream.this.clearBtnColor();
                     ExamFream.this.disableBtn(false);
                 } else{
                     ExamFream.this.drawQuestion();
+                    // 还原选择的答案
+                    ExamFream.this.restoreAnswer();
                     curNumField.setText(questionNum.getCurNum() + 1 + "");
                 }
 

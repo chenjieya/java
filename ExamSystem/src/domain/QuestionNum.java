@@ -16,6 +16,10 @@ public class QuestionNum {
     }
 
     public void setCurNum(int num) {
+        if (num < 0) {
+            this.curNum = 0;
+            return;
+        }
         this.curNum = num;
     }
 
