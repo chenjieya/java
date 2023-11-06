@@ -6,6 +6,8 @@ import domain.QuestionNum;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class ExamFream extends FrameRule {
@@ -53,6 +55,8 @@ public class ExamFream extends FrameRule {
 
     // 题号
     private QuestionNum questionNum= new QuestionNum(questionTotal);
+    // 答案
+    private String[] answer = new String[this.questionTotal];
 
     public ExamFream() {
         this.init();
@@ -140,12 +144,12 @@ public class ExamFream extends FrameRule {
         submitBtn.setForeground(Color.RED);
         submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 
-
-        curNumField.setText(questionNum.getCurNum() + "");
+        this.drawQuestion();
+        curNumField.setText(questionNum.getCurNum() + 1 + "");
         totalCountField.setText(questionNum.getTotalNum() + "");
         anwserCountField.setText(questionNum.getAnswerNum() + "");
         unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
-        this.drawQuestion();
+
     }
 
     @Override
@@ -180,8 +184,84 @@ public class ExamFream extends FrameRule {
 
     }
 
+    private void clearBtnColor() {
+        Abtn.setBackground(null);
+        Bbtn.setBackground(null);
+        Cbtn.setBackground(null);
+        Dbtn.setBackground(null);
+    }
+
+    private void disableBtn(boolean falge) {
+        Abtn.setEnabled(falge);
+        Bbtn.setEnabled(falge);
+        Cbtn.setEnabled(falge);
+        Dbtn.setEnabled(falge);
+    }
+
+    private int getArrayLength(String[] arr) {
+        int count = 0;
+        for (String item : arr) {
+            if (item != null) {
+                count+=1;
+            }
+        }
+        return count;
+    }
+
     @Override
     protected void addEventLisenter() {
+
+        nextBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ExamFream.this.clearBtnColor();
+
+                // 当前题目+1
+                int curNum = ExamFream.this.questionNum.getCurNum();
+                curNum++;
+                ExamFream.this.questionNum.setCurNum(curNum);
+
+                if (ExamFream.this.questionNum.getCurNum() == ExamFream.this.questionTotal) { // 最后一题
+                    answerTextArea.setText("全部题目回答完毕，请及时提交试卷");
+                    nextBtn.setEnabled(false);
+
+                    // 让全部选项按钮颜色制空，选项不可用
+                    ExamFream.this.clearBtnColor();
+                    ExamFream.this.disableBtn(false);
+
+                    anwserCountField.setText(questionNum.getAnswerNum() + "");
+                    unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
+                } else{
+                    ExamFream.this.drawQuestion();
+                    curNumField.setText(questionNum.getCurNum() + 1 + "");
+                    anwserCountField.setText(questionNum.getAnswerNum() + "");
+                    unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
+                }
+            }
+        });
+
+
+
+        ActionListener listener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 先将所有的颜色清空
+                ExamFream.this.clearBtnColor();
+
+                JButton button = (JButton)e.getSource();
+                button.setBackground(Color.YELLOW);
+
+                // 将点击的答案存储到数组中
+                answer[questionNum.getCurNum()] = button.getText();
+                int answerLength = ExamFream.this.getArrayLength(answer);
+                ExamFream.this.questionNum.setAnswerNum(answerLength);
+            }
+        };
+
+        Abtn.addActionListener(listener);
+        Bbtn.addActionListener(listener);
+        Cbtn.addActionListener(listener);
+        Dbtn.addActionListener(listener);
 
     }
 
@@ -197,8 +277,28 @@ public class ExamFream extends FrameRule {
 //        new ExamFream("考试窗口");
 //    }
 
+    //设计一个方法 用来处理图片展示
+    private ImageIcon drawImage(String path){
+        //通过给定的路径创建一个icon对象
+        ImageIcon imageIcon = new ImageIcon(path);
+        //设置imageIcon对象内的image属性
+        imageIcon.setImage(imageIcon.getImage().getScaledInstance(280,230,Image.SCALE_DEFAULT));
+        //将设置好的imageIcon对象返回
+        return imageIcon;
+    }
+
     public void drawQuestion() {
-        String title = paper.get(questionNum.getCurNum()).getQuestion();
+        Question ques = paper.get(questionNum.getCurNum());
+        String title = ques.getQuestion();  // 题干
+        String imgPath = ques.getImgPath();
+        if (imgPath != null) {
+            // 有图片
+            picLabel.setIcon(this.drawImage("src//img//"+imgPath));
+        } else{
+            picLabel.setIcon(null);
+        }
+        // 没有图片
         answerTextArea.setText((questionNum.getCurNum() + 1) + "." +title.replace("<br>", "\n"));
+
     }
 }

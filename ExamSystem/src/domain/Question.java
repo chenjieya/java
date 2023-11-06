@@ -3,9 +3,16 @@ package domain;
 public class Question {
 	private String question;
 	private String answer;
+
+    private String imgPath;
 	public Question(String question, String answer) {
         this.question = question;
         this.answer = answer;
+    }
+    public Question(String question, String answer, String imgPath) {
+        this.question = question;
+        this.answer = answer;
+        this.imgPath = imgPath;
     }
 
     public String getQuestion() {
@@ -22,6 +29,14 @@ public class Question {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     @Override

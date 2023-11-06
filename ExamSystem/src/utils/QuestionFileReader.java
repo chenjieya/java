@@ -22,8 +22,13 @@ public class QuestionFileReader {
 
 
             while (line != null) {
-                String[] values = line.split("#");
-                questionBox.add(new Question(values[0], values[1]));
+                String[] values = line.split("#");  // 长度是2说明没有图片
+                if (values.length == 2) {
+                    questionBox.add(new Question(values[0], values[1]));
+                } else {
+                    questionBox.add(new Question(values[0], values[1], values[2]));
+                }
+
                 line = br.readLine();
             }
 

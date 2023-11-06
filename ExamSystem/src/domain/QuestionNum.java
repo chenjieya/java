@@ -29,6 +29,7 @@ public class QuestionNum {
 
     public void setAnswerNum(int answerNum) {
         this.answerNum = answerNum;
+        this.setUnAnswerNum(this.totalNum - this.answerNum);
     }
 
     public int getTotalNum() {
