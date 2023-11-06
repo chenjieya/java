@@ -228,15 +228,13 @@ public class ExamFream extends FrameRule {
                     // 让全部选项按钮颜色制空，选项不可用
                     ExamFream.this.clearBtnColor();
                     ExamFream.this.disableBtn(false);
-
-                    anwserCountField.setText(questionNum.getAnswerNum() + "");
-                    unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
                 } else{
                     ExamFream.this.drawQuestion();
                     curNumField.setText(questionNum.getCurNum() + 1 + "");
-                    anwserCountField.setText(questionNum.getAnswerNum() + "");
-                    unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
                 }
+
+                anwserCountField.setText(questionNum.getAnswerNum() + "");
+                unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
             }
         });
 
