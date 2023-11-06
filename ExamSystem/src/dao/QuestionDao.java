@@ -28,12 +28,12 @@ public class QuestionDao {
         return new ArrayList<>(exam);
     }
 
-    public static void main(String[] args) {
-        ArrayList<Question> paper = new QuestionDao().getPaper(5);
-
-        for (int i = 0; i < paper.size(); i ++) {
-            System.out.println((i+1)+"."+paper.get(i).getQuestion().replace("<br>", "\n"));
-        }
-    }
+//    public static void main(String[] args) {
+//        ArrayList<Question> paper = new QuestionDao().getPaper(5);
+//
+//        for (int i = 0; i < paper.size(); i ++) {
+//            System.out.println((i+1)+"."+paper.get(i).getQuestion().replace("<br>", "\n"));
+//        }
+//    }
 
 }

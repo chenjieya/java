@@ -1,7 +1,12 @@
 package view;
 
+import dao.QuestionDao;
+import domain.Question;
+import domain.QuestionNum;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 public class ExamFream extends FrameRule {
 
@@ -38,6 +43,16 @@ public class ExamFream extends FrameRule {
     private JButton prevBtn = new JButton("prev");
     private JButton nextBtn = new JButton("next");
     private JButton submitBtn = new JButton("submit");
+
+    public int questionTotal = 5;
+
+    // 创建一个试卷对象
+    private QuestionDao exam = new QuestionDao();
+
+    private ArrayList<Question> paper = exam.getPaper(this.questionTotal);
+
+    // 题号
+    private QuestionNum questionNum= new QuestionNum(questionTotal);
 
     public ExamFream() {
         this.init();
@@ -124,6 +139,13 @@ public class ExamFream extends FrameRule {
         submitBtn.setBounds(276, 50, 100, 30);
         submitBtn.setForeground(Color.RED);
         submitBtn.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
+
+
+        curNumField.setText(questionNum.getCurNum() + "");
+        totalCountField.setText(questionNum.getTotalNum() + "");
+        anwserCountField.setText(questionNum.getAnswerNum() + "");
+        unAnswerCountField.setText(questionNum.getUnAnswerNum() + "");
+        this.drawQuestion();
     }
 
     @Override
@@ -174,4 +196,9 @@ public class ExamFream extends FrameRule {
 //    public static void main(String[] args) {
 //        new ExamFream("考试窗口");
 //    }
+
+    public void drawQuestion() {
+        String title = paper.get(questionNum.getCurNum()).getQuestion();
+        answerTextArea.setText((questionNum.getCurNum() + 1) + "." +title.replace("<br>", "\n"));
+    }
 }
