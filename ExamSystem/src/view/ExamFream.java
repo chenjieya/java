@@ -35,7 +35,7 @@ public class ExamFream extends FrameRule {
     private JTextField unAnswerCountField = new JTextField("0");
 
     private JLabel timeLabel = new JLabel("剩余答题时间");
-    private JLabel realTimeLabel = new JLabel("00:00:00");
+    private JLabel realTimeLabel = new JLabel();
 
     // 下方按钮组件
     private JButton Abtn = new JButton("A");
@@ -57,6 +57,10 @@ public class ExamFream extends FrameRule {
     private QuestionNum questionNum= new QuestionNum(questionTotal);
     // 答案
     private String[] answer = new String[this.questionTotal];
+
+    // 倒计时时间（分钟）
+    private int time = 1;
+    private TimeRunable timeRunable = new TimeRunable();
 
     public ExamFream() {
         this.init();
@@ -184,6 +188,77 @@ public class ExamFream extends FrameRule {
 
     }
 
+    // 倒计时 内部类
+    public class TimeRunable extends Thread {
+
+        private boolean flag = true;
+
+        public void setFlag(boolean falg) {
+            this.flag = falg;
+        }
+        public void run() {
+            int hour = time / 60;
+            int minute = time % 60;
+            int second = 0;
+
+            while(flag) {
+                //将 小时 分钟 秒 三个变量内存储的数字进行拼串儿处理
+                StringBuilder timeString = new StringBuilder();
+                //处理小时
+                if(hour>=0 && hour<10){
+                    timeString.append("0");
+                }
+                timeString.append(hour);
+                timeString.append(":");
+                //处理分钟
+                if(minute>=0 && minute<10){
+                    timeString.append("0");
+                }
+                timeString.append(minute);
+                timeString.append(":");
+                //处理秒
+                if(second>=0 && second<10){
+                    timeString.append("0");
+                }
+                timeString.append(second);
+
+                realTimeLabel.setText(timeString.toString());
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+
+                //改变
+                if(second>0){//秒数还够用
+                    second--;
+                }else{//秒数已经为0
+                    if(minute>0){//分钟还够用
+                        minute--;
+                        second=59;
+                    }else{//分钟为0
+                        if(hour>0){//小时还够用
+                            hour--;
+                            minute=59;
+                            second=59;
+                        }else{
+                            System.out.println("时间截止");
+                            //时间显示为红色
+                            realTimeLabel.setForeground(Color.RED);
+                            ExamFream.this.disableBtn(false);//自己写的方法所有按钮失效
+                            prevBtn.setEnabled(false);
+                            nextBtn.setEnabled(false);
+                            //弹出一个消息框 告诉考试结束 请提交
+                            JOptionPane.showMessageDialog(ExamFream.this,"考试结束,请提交试卷");
+                            this.setFlag(false);
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
     private void clearBtnColor() {
         Abtn.setBackground(null);
         Bbtn.setBackground(null);
@@ -207,6 +282,9 @@ public class ExamFream extends FrameRule {
         }
         return count;
     }
+
+
+
 
     public void restoreAnswer() {
         String answer = this.answer[questionNum.getCurNum()];
@@ -236,6 +314,21 @@ public class ExamFream extends FrameRule {
 
     @Override
     protected void addEventLisenter() {
+
+        submitBtn.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // 1. 先停止时间倒计时
+                timeRunable.setFlag(false);
+                // 2. 将其他的所有按钮都禁用
+                ExamFream.this.disableBtn(false);
+                prevBtn.setEnabled(false);
+                nextBtn.setEnabled(false);;
+                // 3. 计算出成绩
+
+            }
+        });
 
         prevBtn.addActionListener(new ActionListener() {
             @Override
@@ -323,6 +416,7 @@ public class ExamFream extends FrameRule {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setResizable(false);
         this.setVisible(true);
+        timeRunable.start();
     }
 
 //    public static void main(String[] args) {
