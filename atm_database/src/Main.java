@@ -22,7 +22,7 @@ public class Main {
 
 
             while(true) {
-                System.out.println("请输入要执行的操作：\n1.查询余额\n2.取款\n3.存款\n4.转账\n0.退出");
+                System.out.println("请输入要执行的操作：\n1.查询余额\n2.取款\n3.存款\n4.转账\n5.开户\n6.销户\n0.退出");
 
                 String a = inp.nextLine();
 
@@ -50,6 +50,22 @@ public class Main {
                         System.out.println("请输入转账金额：");
                         String zhuanMoney = inp.nextLine();
                         ta.zhuanzhang(user, toName,  Float.parseFloat(zhuanMoney));
+                    break;
+                    case "5":
+                        System.out.println("请输入用户名：");
+                        String users = inp.nextLine();
+                        System.out.println("请输入密码：");
+                        String pwds = inp.nextLine();
+                        System.out.println("请输入存款金额：");
+                        String moneys = inp.nextLine();
+                        ta.kaihuhu(users,pwds,Float.parseFloat(moneys));
+                    break;
+                    case "6":
+                        System.out.println("请输入用户名：");
+                        String xaiohuName = inp.nextLine();
+                        System.out.println("请输入密码：");
+                        String xiaohuMima = inp.nextLine();
+                        ta.xiaohu(xaiohuName, xiaohuMima);
                     break;
                 }
 

@@ -30,7 +30,7 @@ public class TestAtm {
         Atm atm = atmd.selectOne(name);
         atm.setBalance(atm.getBalance() + money);
         // JDBC 写sql将信息存入进去  取款也是写数据
-        atmd.insert(atm);
+        atmd.update(atm);
     }
 
     // 取款
@@ -38,7 +38,7 @@ public class TestAtm {
         Atm atm = atmd.selectOne(name);
         if (atm.getBalance() >= money) {
             atm.setBalance(atm.getBalance() - money);
-            atmd.insert(atm);
+            atmd.update(atm);
         } else{
             System.out.println("您的余额不足");
         }
@@ -56,8 +56,8 @@ public class TestAtm {
             inUser.setBalance(inUser.getBalance()+money);
 
             // 更新数据库
-            atmd.insert(outUser);
-            atmd.insert(inUser);
+            atmd.update(outUser);
+            atmd.update(inUser);
         } else{
             // 余额不足
             System.out.println("您的余额不足");
@@ -65,8 +65,26 @@ public class TestAtm {
     }
 
     // 开户
+    public void kaihuhu(String name, String pwd, Float money) {
+        Atm atms = atmd.selectOne(name);
+        if (atms != null) {
+            System.out.println("用户已存在");
+        } else{
+            atmd.insert(new Atm(name, pwd, money));
+            System.out.println("开户成功");
+        }
+    }
 
     // 销户
-
+    public void xiaohu(String name, String password) {
+        String loginRes = this.login(name, password);
+        if (loginRes.equals("登录成功")) {
+            // 销户
+            atmd.delete(name);
+            System.out.println("销户成功");
+        } else{
+            System.out.println(loginRes);
+        }
+    }
 
 }
