@@ -1,5 +1,6 @@
 import Dao.EmpLikeDao;
 import Domain.Emp;
+import Server.EmpServer;
 
 import java.util.ArrayList;
 
@@ -8,8 +9,11 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello, world!");
-        EmpLikeDao dao = new EmpLikeDao();
-        ArrayList<Emp> res = dao.searchLike("B");
+//        EmpLikeDao dao = new EmpLikeDao();
+//        ArrayList<Emp> res = dao.searchLike("B");
+
+        EmpServer result = new EmpServer();
+        ArrayList<Emp> res = result.searchPage(2);
 
         for (Emp list:res) {
             System.out.println(list);
