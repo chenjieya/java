@@ -9,7 +9,7 @@ public class AtmDao {
     public Atm selectOne(String aname) {
         Atm atm = null;
         Connection conn = null;
-        Statement state = null;
+        PreparedStatement state = null;
         ResultSet res = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");  // 加载驱动
@@ -17,10 +17,13 @@ public class AtmDao {
             String user = "root";
             String pwd = "chenjie+00";
             conn = DriverManager.getConnection(url, user, pwd);  // 创建连接
-            state = conn.createStatement();
 
-            String sql = "select * from atm where aname = '"+aname+"'";
-            res = state.executeQuery(sql);
+            String sql = "select * from atm where aname = ?";
+
+            state = conn.prepareStatement(sql);  // 预先处理sql
+            state.setString(1, aname);
+             // state = conn.createStatement();
+            res = state.executeQuery();
 
             if (res.next()) {
                 atm = new Atm();
@@ -65,7 +68,7 @@ public class AtmDao {
 
     public void update(Atm atm) {
         Connection conn = null;
-        Statement state = null;
+        PreparedStatement state = null;
         ResultSet res = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");  // 加载驱动
@@ -73,10 +76,14 @@ public class AtmDao {
             String user = "root";
             String pwd = "chenjie+00";
             conn = DriverManager.getConnection(url, user, pwd);  // 创建连接
-            state = conn.createStatement();
-
-            String sql = "update atm set apassword = '"+atm.getPassword()+"', abalance = '"+atm.getBalance()+"' where aname = '"+atm.getName()+"'";
-            state.executeUpdate(sql);
+            String sql = "update atm set apassword = ?, abalance = ? where aname = ?";
+            // state = conn.createStatement();
+            state = conn.prepareStatement(sql);
+            state.setString(1, atm.getPassword());
+            state.setFloat(2, atm.getBalance());
+            state.setString(3, atm.getName());
+            // String sql = "update atm set apassword = '"+atm.getPassword()+"', abalance = '"+atm.getBalance()+"' where aname = '"+atm.getName()+"'";
+            state.executeUpdate();
 
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
