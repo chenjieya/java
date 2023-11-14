@@ -1,6 +1,7 @@
 package Dao;
 
 import Domain.CarClass;
+import org.orm.com.JdbcExecutor;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -165,5 +166,26 @@ public class CarDao {
             }
 
         }
+    }
+
+    public void saveByExecutor(CarClass car) {
+        JdbcExecutor jd = new JdbcExecutor(true);
+        String sql = "insert into t_car values(null,?,?,?)";
+        int a = jd.doUpdate(sql,true, new Object[]{car.getCname(),car.getColor(),car.getPrice()});
+        jd.closeConnect();
+        System.out.println(a);
+    }
+
+    public void savesByExecutor(ArrayList<CarClass> list) {
+        JdbcExecutor jd = new JdbcExecutor(false);
+        String sql = "insert into t_car values(null,?,?,?)";
+
+        for (CarClass cc:list) {
+            int a = jd.doUpdate(sql,true,new Object[]{cc.getCname(),cc.getColor(),cc.getPrice()});
+            System.out.println(a);
+        }
+        jd.commit();
+        jd.closeConnect();
+
     }
 }
