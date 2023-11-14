@@ -22,7 +22,7 @@ public class Main {
 //            System.out.println(str); // 张三
 
             Person p = (Person) clazz.newInstance();
-            Field f = clazz.getDeclaredField("age");  // aaa是Person父类得私有属性
+            Field f = clazz.getDeclaredField("age");  // age是Person类得私有属性
             f.setAccessible(true);  // 设置私有属性也可以进行操作
             f.set(p, 18);
             int str = (int) f.get(p);
