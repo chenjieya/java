@@ -1,5 +1,7 @@
 package org.orm.com;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -29,14 +31,19 @@ public class ResultHandler {
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (InstantiationException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
         }
-
 
 
         return list;
     }
 
-    private Object handleResultSet(ResultSet res, Class rowType) throws SQLException {
+    private Object handleResultSet(ResultSet res, Class rowType) throws SQLException, InstantiationException, IllegalAccessException, InvocationTargetException {
 
         // 说明只有一个值
         // select count(*) from 表;
@@ -76,6 +83,60 @@ public class ResultHandler {
 
             return row;
         }
+
+        // 走到此处，说明是domain
+        Object obj = rowType.newInstance();
+        Method[] methods = rowType.getMethods();  // 获取到当前类（domain）中的所有方法
+
+        for (Method method : methods) {
+            // 寻找set开头的方法，进行赋值操作
+            if (method.getName().startsWith("set")){
+
+                // 结果集字段和方法名进行匹配
+                String columnName = method.getName().substring(3);
+                columnName = columnName.substring(0,1).toLowerCase() + columnName.substring(1);
+
+                // 根据表格中的字段获取到对应的值
+                Object value = getValueByType(res, columnName,  method.getParameterTypes()[0]);
+
+                if (value != null) {
+                    // 执行方法(参数需要从结果集中获取)
+                    method.invoke(obj, value);
+                }
+
+            }
+        }
+
+
+        return obj;
+    }
+
+    private Object getValueByType(ResultSet res, String columnName, Class<?> type) throws SQLException {
+
+        if (type == int.class || type == Integer.class) {
+            return res.getInt(columnName);
+        }
+
+        if (type == String.class) {
+            return res.getString(columnName);
+        }
+
+        if (type == double.class || type == Double.class) {
+            return res.getDouble(columnName);
+        }
+
+        if (type == long.class || type == Long.class) {
+            return res.getLong(columnName);
+        }
+
+        if (type == boolean.class || type == Boolean.class) {
+            return res.getBoolean(columnName);
+        }
+
+        if (type == Date.class) {
+            return res.getDate(columnName);
+        }
+
 
         return null;
     }

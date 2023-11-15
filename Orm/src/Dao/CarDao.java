@@ -204,7 +204,17 @@ public class CarDao {
         String sql = "select count(*),max(price), min(price) from t_car";
         ArrayList<Map> a =  jd.doQuery(sql, Map.class);
 
-        System.out.println(a);  // [3]
+        System.out.println(a);  // [{min(price)=100.0, count(*)=3, max(price)=300.0}]
+        jd.closeConnect();
+    }
+
+    public void selectAllByExecutor() {
+        JdbcExecutor jd = new JdbcExecutor(true);
+        String sql = "select * from t_car";
+        ArrayList<CarClass> a =  jd.doQuery(sql, CarClass.class);
+
+        // [CarClass{cno=1, cname='BMW', color='F40', price=100.0}, CarClass{cno=2, cname='BC', color='FFF', price=200.0}, CarClass{cno=4, cname='BYD', color='Black', price=300.0}]
+        System.out.println(a);
         jd.closeConnect();
     }
 

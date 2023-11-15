@@ -11,6 +11,8 @@ public class SelectByExecutor {
 
         dao.selectMapByExecutor();
 
+        dao.selectAllByExecutor();
+
     }
 
 }
