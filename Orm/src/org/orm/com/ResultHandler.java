@@ -1,5 +1,8 @@
 package org.orm.com;
 
+import org.orm.com.annotations.Column;
+
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.sql.Date;
@@ -37,13 +40,15 @@ public class ResultHandler {
             throw new RuntimeException(e);
         } catch (IllegalAccessException e) {
             throw new RuntimeException(e);
+        } catch (NoSuchFieldException e) {
+            throw new RuntimeException(e);
         }
 
 
         return list;
     }
 
-    private Object handleResultSet(ResultSet res, Class rowType) throws SQLException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    private Object handleResultSet(ResultSet res, Class rowType) throws SQLException, InstantiationException, IllegalAccessException, InvocationTargetException, NoSuchFieldException {
 
         // 说明只有一个值
         // select count(*) from 表;
@@ -93,8 +98,28 @@ public class ResultHandler {
             if (method.getName().startsWith("set")){
 
                 // 结果集字段和方法名进行匹配
-                String columnName = method.getName().substring(3);
-                columnName = columnName.substring(0,1).toLowerCase() + columnName.substring(1);
+                String columnName;
+
+                Column annotation = method.getAnnotation(Column.class);
+
+                if (annotation != null) {
+                    // 表示在set方法使用了column注解，制定了对应的字段名
+                    columnName = annotation.value();
+                } else {
+
+                    // 通过方法获得
+                    columnName = method.getName().substring(3);
+                    columnName = columnName.substring(0,1).toLowerCase() + columnName.substring(1);
+
+                    // 代码至此就已经从set方法中获取到对应的列名了 setCno -> cno
+                    Field field = rowType.getDeclaredField(columnName);
+                    annotation = field.getAnnotation(Column.class);
+
+                    if (annotation != null) {
+                        // 表示在属性上使用了注解
+                        columnName = annotation.value();
+                    }
+                }
 
                 // 根据表格中的字段获取到对应的值
                 Object value = getValueByType(res, columnName,  method.getParameterTypes()[0]);
@@ -113,28 +138,32 @@ public class ResultHandler {
 
     private Object getValueByType(ResultSet res, String columnName, Class<?> type) throws SQLException {
 
-        if (type == int.class || type == Integer.class) {
-            return res.getInt(columnName);
-        }
+        try{
+            if (type == int.class || type == Integer.class) {
+                return res.getInt(columnName);
+            }
 
-        if (type == String.class) {
-            return res.getString(columnName);
-        }
+            if (type == String.class) {
+                return res.getString(columnName);
+            }
 
-        if (type == double.class || type == Double.class) {
-            return res.getDouble(columnName);
-        }
+            if (type == double.class || type == Double.class) {
+                return res.getDouble(columnName);
+            }
 
-        if (type == long.class || type == Long.class) {
-            return res.getLong(columnName);
-        }
+            if (type == long.class || type == Long.class) {
+                return res.getLong(columnName);
+            }
 
-        if (type == boolean.class || type == Boolean.class) {
-            return res.getBoolean(columnName);
-        }
+            if (type == boolean.class || type == Boolean.class) {
+                return res.getBoolean(columnName);
+            }
 
-        if (type == Date.class) {
-            return res.getDate(columnName);
+            if (type == Date.class) {
+                return res.getDate(columnName);
+            }
+        } catch(SQLException e) {
+            System.out.println("[warning] Column '" + columnName + "' is not exist'");
         }
 
 

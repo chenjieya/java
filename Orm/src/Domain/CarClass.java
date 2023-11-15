@@ -1,7 +1,10 @@
 package Domain;
 
+import org.orm.com.annotations.Column;
+
 public class CarClass {
     private Long cno;
+    @Column("car_name")
     private String cname;
     private String color;
     private Double price;
