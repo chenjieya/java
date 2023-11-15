@@ -5,6 +5,7 @@ import org.orm.com.JdbcExecutor;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class CarDao {
 
@@ -188,4 +189,23 @@ public class CarDao {
         jd.closeConnect();
 
     }
+
+    public void selectCountByExecutor() {
+        JdbcExecutor jd = new JdbcExecutor(true);
+        String sql = "select count(*) from t_car";
+        ArrayList<Integer> a =  jd.doQuery(sql, Integer.class);
+
+        System.out.println(a);  // [3]
+        jd.closeConnect();
+    }
+
+    public void selectMapByExecutor() {
+        JdbcExecutor jd = new JdbcExecutor(true);
+        String sql = "select count(*),max(price), min(price) from t_car";
+        ArrayList<Map> a =  jd.doQuery(sql, Map.class);
+
+        System.out.println(a);  // [3]
+        jd.closeConnect();
+    }
+
 }

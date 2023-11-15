@@ -70,7 +70,7 @@ public class JdbcExecutor {
     }
 
     /**
-     * insert update delete
+     * INSERT UODATE DELETE
      */
     public int doUpdate(String sql, boolean isReturnGeneratedKeys, Object ...parmas) {
         // 1. 导入jar包
@@ -119,6 +119,40 @@ public class JdbcExecutor {
         }
 
     }
+
+    /**
+     * SELECT
+     */
+    public <T> ArrayList<T> doQuery(String sql, Class<T> rowType,  Object... parmas) {
+        // 1. 导入jar包
+        // 2. 加载驱动（Static）
+        // 3. 创建连接（Constructor）
+        PreparedStatement stmt = null;
+        ResultSet res = null;
+        try {
+            // 4. 创建命令集
+            stmt = coon.prepareStatement(sql);
+
+            // 5. 替换sql-> ?
+            for(int i = 0; i < parmas.length; i++) {
+                stmt.setObject(i+1, parmas[i]);
+            }
+
+            // 6. 结果集
+            res = stmt.executeQuery();
+
+            // 7. 将数据库表中的数据转换成java中的数据
+            ResultHandler result = new ResultHandler();
+            ArrayList<T> list = result.handler(res,rowType);
+            return list;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        } finally {
+            this.closeResult(res);
+            this.closeStmt(stmt);
+        }
+    }
+
 
     /**
      * 手动提交事务，交给开发者自己控制
