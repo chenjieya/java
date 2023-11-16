@@ -10,7 +10,9 @@ import java.util.regex.Pattern;
 public class SqlHandler {
     private  String oldSql;
     private ArrayList<String> paramsKeys;
-    private Object[] paramsValues;
+
+    private static final Object[] DEFAULT_PARAM_VALUES = {};
+    private Object[] paramsValues = DEFAULT_PARAM_VALUES;
 
     /**
      * insert into table values(null, #{cname}, #{color}, #{price})
@@ -37,6 +39,9 @@ public class SqlHandler {
      * @param params 参数
      */
     public void handleParams(Object params) throws InvocationTargetException, IllegalAccessException, NoSuchMethodException {
+        if (params == null) {
+            return;
+        }
         this.paramsValues = new Object[this.paramsKeys.size()];
 
 
@@ -71,7 +76,7 @@ public class SqlHandler {
     }
 
     private boolean issimple(Class type) {
-        return (type == int.class || type == Integer.class || type == long.class || type == Long.class || type == float.class || type == Float.class || type == double.class || type == Double.class || type == short.class || type == Short.class || type == byte.class || type == Byte.class || type == boolean.class || type == Boolean.class);
+        return (type == int.class || type == Integer.class || type == long.class || type == Long.class || type == float.class || type == Float.class || type == double.class || type == Double.class || type == short.class || type == Short.class || type == byte.class || type == Byte.class || type == boolean.class || type == Boolean.class || type == String.class);
     }
 
 

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/01-java基本数据类型" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/02-类型转换" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/03-运算符" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/04-运算符练习题" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/05-java的常量和变量" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/06-类型转换" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/07-运算符号" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/08-运算符号2" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/09-笔试题" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/10-if语句" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11-switch语句" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/12-for循环" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/13-for循环嵌套" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/14-while" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/15-java数组的使用" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/16-java二维数组" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/17-面向对象之属性" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/18-面向对象之方法设计" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/19-练习题" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/20-面向对象之方法参数返回值问题" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/21-面向对象之方法重载" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/22-构造方法+块+this用法" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/23-计算器" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/24-面向对象类的设计(ArrayBox封装)" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/25-类的关系之继承" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/29-java包装类" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/java历史背景" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

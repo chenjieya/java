@@ -2,6 +2,7 @@ package Dao;
 
 import Domain.CarClass;
 import org.orm.com.JdbcExecutor;
+import org.orm.com.SqlSession;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -269,6 +270,22 @@ public class CarDao {
 
         int a =  jd.doUpdate(sql, true, carObj);
         jd.closeConnect();
+    }
+
+    public void sqlSelectAllBySession() {
+        SqlSession ss = new SqlSession(true);
+        String sql = "select * from t_car";
+        ArrayList<CarClass> res = ss.selectList(sql,CarClass.class);
+        System.out.println(res);
+        ss.closeConnect();
+    }
+
+    public void sqlSelectOneBySession() {
+        SqlSession ss = new SqlSession(true);
+        String sql = "select * from t_car where car_name = #{cname}";
+        CarClass re = ss.selectOne(sql, "BYD", CarClass.class);
+        System.out.println(re);
+        ss.closeConnect();
     }
 
 }
