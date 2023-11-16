@@ -1,0 +1,59 @@
+package browser;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.util.Scanner;
+
+public class Browser {
+
+    private Scanner inp = new Scanner(System.in);
+    public void open() {
+
+        // 用户输入一个地址
+        System.out.println("请输入要访问的地址：");
+        String url = inp.nextLine();
+
+        // 解析网络地址
+        this.parseUrl(url);
+    }
+
+    private void parseUrl(String url) {
+        // IP:PORT/资源？参数=值
+
+        int portIndex = url.indexOf(":");
+        int slashIndex = url.indexOf("/");
+
+        // ip
+        String ip = url.substring(0, portIndex);
+        // port
+        Integer port = Integer.parseInt(url.substring(portIndex + 1, slashIndex));
+        // 资源参数
+        String resource = url.substring(slashIndex + 1);
+
+        this.request(ip, port, resource);
+    }
+
+    // 将内容发送给服务器
+    private void request(String ip, Integer port, String resource) {
+
+        try {
+            // 和服务端建立连接
+            Socket socket = new Socket(ip, port);
+
+            // 将资源通过流的方式发送给服务端
+            PrintWriter out = new PrintWriter(socket.getOutputStream());
+
+            out.println(resource);
+            out.flush();
+
+            // 浏览器等待信息
+
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+}
