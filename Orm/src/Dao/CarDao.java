@@ -5,6 +5,7 @@ import org.orm.com.JdbcExecutor;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 public class CarDao {
@@ -61,7 +62,10 @@ public class CarDao {
         }
     }
 
-
+    /**
+     * 查询多条数据
+     * @return 集合
+     */
     public ArrayList<CarClass> searchAll() {
         ArrayList<CarClass> result = new ArrayList<>();
         Connection conn = null;
@@ -169,6 +173,10 @@ public class CarDao {
         }
     }
 
+    /**
+     * ORM框架封装-新增数据
+     * @param car
+     */
     public void saveByExecutor(CarClass car) {
         JdbcExecutor jd = new JdbcExecutor(true);
         String sql = "insert into t_car values(null,?,?,?)";
@@ -177,6 +185,10 @@ public class CarDao {
         System.out.println(a);
     }
 
+    /**
+     * orm框架封装-新增多条数据-手动提交事务
+     * @param list
+     */
     public void savesByExecutor(ArrayList<CarClass> list) {
         JdbcExecutor jd = new JdbcExecutor(false);
         String sql = "insert into t_car values(null,?,?,?)";
@@ -190,6 +202,9 @@ public class CarDao {
 
     }
 
+    /**
+     * ORM框架封装-查询数据-基本类型存储
+     */
     public void selectCountByExecutor() {
         JdbcExecutor jd = new JdbcExecutor(true);
         String sql = "select count(*) from t_car";
@@ -199,6 +214,9 @@ public class CarDao {
         jd.closeConnect();
     }
 
+    /**
+     * ORM框架封装-查询数据-MAP存储
+     */
     public void selectMapByExecutor() {
         JdbcExecutor jd = new JdbcExecutor(true);
         String sql = "select count(*),max(price), min(price) from t_car";
@@ -208,6 +226,9 @@ public class CarDao {
         jd.closeConnect();
     }
 
+    /**
+     *  ORM框架封装-查询数据-对象存储
+     */
     public void selectAllByExecutor() {
         JdbcExecutor jd = new JdbcExecutor(true);
         String sql = "select * from t_car";
@@ -215,6 +236,38 @@ public class CarDao {
 
         // [CarClass{cno=1, cname='BMW', color='F40', price=100.0}, CarClass{cno=2, cname='BC', color='FFF', price=200.0}, CarClass{cno=4, cname='BYD', color='Black', price=300.0}]
         System.out.println(a);
+        jd.closeConnect();
+    }
+
+    /**
+     * 新sql预处理
+     * insert into t_car values(null, #{cname}, #{color}, #{price})
+     * Map{cname=ABC,color=red,price=100.1}
+     */
+    public void sqlMapByExecutor() {
+        JdbcExecutor jd = new JdbcExecutor(true);
+        String sql = "insert into t_car values(null, #{cname}, #{color}, #{price})";
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("cname", "ABC");
+        map.put("color", "red");
+        map.put("price", 100.1);
+        int a =  jd.doUpdate(sql, true, map);
+        jd.closeConnect();
+    }
+
+    /**
+     * 新sql预处理
+     * Car
+     */
+    public void sqlDomainByExecutor() {
+        JdbcExecutor jd = new JdbcExecutor(true);
+        String sql = "insert into t_car values(null, #{cname}, #{color}, #{price})";
+        CarClass carObj = new CarClass();
+        carObj.setCname("BYDPLUSE");
+        carObj.setColor("黑色");
+        carObj.setPrice(100.8);
+
+        int a =  jd.doUpdate(sql, true, carObj);
         jd.closeConnect();
     }
 

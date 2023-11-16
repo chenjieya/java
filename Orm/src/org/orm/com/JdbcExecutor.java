@@ -1,12 +1,13 @@
 package org.orm.com;
 
 import javax.sql.DataSource;
+import java.lang.reflect.InvocationTargetException;
 import java.sql.*;
 import java.util.ArrayList;
 
 public class JdbcExecutor {
 
-    private String url = "jdbc:mysql://localhost:3306/duyi_orm";
+    private String url = "jdbc:mysql://192.168.1.19:3306/duyi_orm";
     private String user = "root";
     private String password = "chenjie+00";
 
@@ -71,7 +72,9 @@ public class JdbcExecutor {
 
     /**
      * INSERT UODATE DELETE
+     * @see this#doUpdate(String,boolean,Object)
      */
+    @Deprecated
     public int doUpdate(String sql, boolean isReturnGeneratedKeys, Object ...parmas) {
         // 1. 导入jar包
         // 4. 创建参数集
@@ -120,6 +123,21 @@ public class JdbcExecutor {
 
     }
 
+    public int doUpdate(String sql, boolean isReturnGeneratedKeys, Object params) {
+        SqlHandler sqlObj = new SqlHandler();
+        sqlObj.handleSql(sql);
+        try {
+            sqlObj.handleParams(params);
+            return this.doUpdate(sqlObj.getOldSql(), isReturnGeneratedKeys, sqlObj.getParamsValues());
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * SELECT
      */
@@ -153,6 +171,20 @@ public class JdbcExecutor {
         }
     }
 
+    public <T> ArrayList<T> doQuery(String sql, Class<T> rowType, Object params) {
+        SqlHandler sqlObj = new SqlHandler();
+        sqlObj.handleSql(sql);
+        try {
+            sqlObj.handleParams(params);
+            return this.doQuery(sqlObj.getOldSql(), rowType, sqlObj.getParamsValues());
+        } catch (InvocationTargetException e) {
+            throw new RuntimeException(e);
+        } catch (IllegalAccessException e) {
+            throw new RuntimeException(e);
+        } catch (NoSuchMethodException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     /**
      * 手动提交事务，交给开发者自己控制
