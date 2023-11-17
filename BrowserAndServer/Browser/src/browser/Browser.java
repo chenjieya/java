@@ -65,10 +65,18 @@ public class Browser {
 
             // 接受服务端的消息
             String res = in.readLine();
-            System.out.println(res);
+            this.parseResponse(res);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+    private void parseResponse(String responseMes) {
+
+        // 换行转换
+        String str = responseMes.replaceAll("<br />", "\r\n");
+
+        System.out.println(str);
+
     }
 
 }

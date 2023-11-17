@@ -11,7 +11,8 @@ public class Server {
         try {
 
             // 创建ServerSocket对象，指定监听的端口号
-            ServerSocket server = new ServerSocket(9999);
+            String port = ServerFilderConfig.getConfigValue("port");
+            ServerSocket server = new ServerSocket(Integer.parseInt(port));
             System.out.println("等待和客户端建立连接。。。");
 
             while(true) {
