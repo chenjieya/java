@@ -1,4 +1,4 @@
-package Server;
+package server;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -11,7 +11,7 @@ public class Server {
         try {
 
             // 创建ServerSocket对象，指定监听的端口号
-            ServerSocket server = new ServerSocket(10000);
+            ServerSocket server = new ServerSocket(9999);
             System.out.println("等待和客户端建立连接。。。");
 
             while(true) {
