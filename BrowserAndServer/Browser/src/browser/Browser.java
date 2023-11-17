@@ -1,6 +1,8 @@
 package browser;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
@@ -8,6 +10,7 @@ import java.util.Scanner;
 public class Browser {
 
     private Scanner inp = new Scanner(System.in);
+    private Socket socket;
     public void open() {
 
         // 用户输入一个地址
@@ -39,7 +42,7 @@ public class Browser {
 
         try {
             // 和服务端建立连接
-            Socket socket = new Socket(ip, port);
+            socket = new Socket(ip, port);
 
             // 将资源通过流的方式发送给服务端
             PrintWriter out = new PrintWriter(socket.getOutputStream());
@@ -48,12 +51,24 @@ public class Browser {
             out.flush();
 
             // 浏览器等待信息
-
+            this.receiptResponse();
 
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    private void receiptResponse() {
+        try {
+            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+            // 接受服务端的消息
+            String res = in.readLine();
+            System.out.println(res);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

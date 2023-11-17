@@ -77,39 +77,25 @@ public class ServerHandler extends Thread {
         // 将返回消息的信息放到仓库里面
         HttpServletRequest request = new HttpServletRequest(content, paramsObj);
         HttpServletResponse response = new HttpServletResponse();
-        this.findController(request, response);
+        ServletController.findController(request, response);
+
+        // 此时说明控制层已经找业务层处理完了想要返回的内容（也就是说response对象中已经存在了返回的内容）
+        this.responseToBrowser(response);
     }
 
-    private void findController(HttpServletRequest request, HttpServletResponse response) {
 
-        // 为了方便，我们写不同的请求资源没必要来重写一边服务器的代码
-        // 所以我们将对应关系放到了文件里面
-        // 读取配置文件
+
+    private void responseToBrowser(HttpServletResponse response) {
         try {
-            // 网络请求过来的资源
-            String content = request.getContent();
+            PrintWriter out = new PrintWriter(clientSocket.getOutputStream());
 
-            Properties properties = new Properties();
-            properties.load(new FileReader("src//web.properties"));
-            // 读取文件获取到类全名 index -> controller.IndexController
-            String fullName = properties.getProperty(content);
+            out.println(response.getResponseContent());
+            out.flush();
 
-            Class<?> controllerClass = Class.forName(fullName);
-            Method method = controllerClass.getMethod("test", HttpServletRequest.class, HttpServletResponse.class);
-
-            method.invoke(controllerClass.newInstance(), request, response);
-
-
-        } catch (Exception e) {
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
-        // 使用反射找到对象类（控制层类），并调用方法
-
     }
-
-    private void responseToBrowser() {}
 
 
 }
