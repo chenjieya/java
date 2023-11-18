@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <!--  一个类要配置八行  -->
+    <servlet>
+        <!--   这个名字和下面的相匹配     -->
+        <servlet-name>testname</servlet-name>
+        <!--   这个类对应，名字匹配到得标签下面得路径资源     -->
+        <servlet-class>controller.TestController</servlet-class>
+    </servlet>
+    
+    <servlet-mapping>
+        <!--    给他起一个名字，这个名字会找到对应得servlet标签下得名字    -->
+        <servlet-name>testname</servlet-name>
+        <!--   匹配得浏览器资源/test     -->
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+</web-app>
