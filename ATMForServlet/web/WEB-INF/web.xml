@@ -14,4 +14,14 @@
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
     
+    
+    <servlet>
+        <servlet-name>searchMoney</servlet-name>
+        <servlet-class>controller.SearchMoneyController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>searchMoney</servlet-name>
+        <url-pattern>/searchMoney</url-pattern>
+    </servlet-mapping>
+    
 </web-app>

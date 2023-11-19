@@ -19,7 +19,7 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" exported="" scope="PROVIDED">
+    <orderEntry type="module-library" scope="PROVIDED">
       <library>
         <CLASSES>
           <root url="file://D:/tomcat/apache-tomcat-9.0.83-windows-x64/apache-tomcat-9.0.83/lib" />
@@ -30,5 +30,16 @@
       </library>
     </orderEntry>
     <orderEntry type="library" exported="" name="mysql-connector-j-8.2.0" level="project" />
+    <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.83" level="application_server_libraries" />
+    <orderEntry type="module-library" exported="" scope="PROVIDED">
+      <library>
+        <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/apache-tomcat-9.0.83/lib" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$USER_HOME$/Downloads/apache-tomcat-9.0.83/lib" recursive="false" />
+      </library>
+    </orderEntry>
   </component>
 </module>

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 public class LoginController extends HttpServlet {
 
@@ -26,9 +27,36 @@ public class LoginController extends HttpServlet {
         AtmLogin atm = MySpring.getBean("service.AtmLogin");
         String result = atm.login(user, pwd);
 
-        System.out.println("校验结果：");
-        System.out.println(user+"-"+pwd);
-        System.out.println(result);
+        // 将最后的结果通过Response对象返回给浏览器
+        response.setCharacterEncoding("utf-8");
+        PrintWriter printWriter = response.getWriter();
+
+        printWriter.write("<!DOCTYPE html>");
+        printWriter.write("<html lang=\"en\">");
+        printWriter.write("<head>");
+        printWriter.write("<meta charset=\"UTF-8\">");
+        printWriter.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
+        printWriter.write(" <title>Document</title>");
+        printWriter.write("</head>");
+        printWriter.write("<body>");
+
+        if(result.equals("登录成功")) {
+            printWriter.write("<div>****************************</div>");
+            printWriter.write("<div>欢迎尊贵的"+user+"用户登陆我行系统</div>");
+            printWriter.write("<div>****************************</div>");
+
+
+            printWriter.write("<div><a href=\"searchMoney?aname="+user+"\">查询余额</a></div>");
+            printWriter.write("<div><a href=\"\">存款</a></div>");
+
+
+        } else{
+            printWriter.write("<h2>对不起，登陆失败，请重新登陆</h2>");
+        }
+
+        printWriter.write("</body>");
+        printWriter.write("</html>");
+
 
     }
 }

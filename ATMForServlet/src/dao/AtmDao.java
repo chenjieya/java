@@ -13,7 +13,7 @@ public class AtmDao {
         PreparedStatement stmt = null;
         Connection conn = null;
         try {
-            String url = "jdbc:mysql://localhost:3306/atm";
+            String url = "jdbc:mysql://192.168.1.19:3306/atm";
             String user = "root";
             String pwd = "chenjie+00";
 
@@ -65,6 +65,10 @@ public class AtmDao {
             }
         }
 
+    }
+
+    public Float getBalance(String username) {
+        return this.selectOne(username).getAbalance();
     }
 
 }
