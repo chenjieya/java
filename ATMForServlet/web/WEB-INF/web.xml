@@ -23,5 +23,23 @@
         <servlet-name>searchMoney</servlet-name>
         <url-pattern>/searchMoney</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>deposit</servlet-name>
+        <servlet-class>controller.DepositController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>deposit</servlet-name>
+        <url-pattern>/depositTemeplate</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>doDeposit</servlet-name>
+        <servlet-class>controller.SubmitController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>doDeposit</servlet-name>
+        <url-pattern>/submitSave</url-pattern>
+    </servlet-mapping>
     
 </web-app>

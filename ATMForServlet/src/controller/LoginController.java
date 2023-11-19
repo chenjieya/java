@@ -47,7 +47,7 @@ public class LoginController extends HttpServlet {
 
 
             printWriter.write("<div><a href=\"searchMoney?aname="+user+"\">查询余额</a></div>");
-            printWriter.write("<div><a href=\"\">存款</a></div>");
+            printWriter.write("<div><a href=\"depositTemeplate?aname="+user+"\">存款</a></div>");
 
 
         } else{
@@ -57,6 +57,6 @@ public class LoginController extends HttpServlet {
         printWriter.write("</body>");
         printWriter.write("</html>");
 
-
+        printWriter.flush();
     }
 }

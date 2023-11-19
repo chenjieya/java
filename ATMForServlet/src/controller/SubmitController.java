@@ -10,19 +10,21 @@ import javax.servlet.http.HttpServlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class SearchMoneyController extends HttpServlet {
+public class SubmitController extends HttpServlet {
 
     @Override
     public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
-        // 设置 将字节按照指定编码转换为字符串(这是get请求，也可以不设置字符集)
         request.setCharacterEncoding("utf-8");
 
-        // 获取到用户传递过来的名字
+        // 获取参数
         String username = request.getParameter("aname");
+        String money = request.getParameter("money");
 
-        // 调用业务层
-        AtmSearchServer atmservice = MySpring.getBean("service.AtmSearchServer");
-        Float money = atmservice.search(username);
+        // 服务层
+
+        AtmSearchServer service = MySpring.getBean("service.AtmSearchServer");
+
+        service.updateMoney(username,Float.parseFloat(money));
 
         response.setCharacterEncoding("utf-8");
         PrintWriter printWriter = response.getWriter();
@@ -33,12 +35,20 @@ public class SearchMoneyController extends HttpServlet {
         printWriter.write("<meta charset=\"UTF-8\">");
         printWriter.write("<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">");
         printWriter.write(" <title>Document</title>");
+        printWriter.write("<script>");
+        printWriter.write("window.onload = function(){");
+        printWriter.write("document.getElementById(\"back\").onclick = function(){");
+        printWriter.write("window.history.back();");
+        printWriter.write("}");
+        printWriter.write("}");
+        printWriter.write("</script>");
+
         printWriter.write("</head>");
         printWriter.write("<body>");
-        printWriter.write("尊敬的"+username+"用户，你的账号余额为"+money+"");
+        printWriter.write("尊敬的"+username+"用户存款成功");
+        printWriter.write("<input type=\"button\" id=\"back\" value=\"返回\">");
         printWriter.write("</body>");
         printWriter.write("</html>");
 
-        printWriter.flush();
     }
 }

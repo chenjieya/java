@@ -13,4 +13,9 @@ public class AtmSearchServer {
         return money;
     }
 
+    public void updateMoney(String name, Float money) {
+        // 调用Dao读取数据/更新数据
+        atmDao.updateBalance(name, money);
+    }
+
 }
