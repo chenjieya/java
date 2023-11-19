@@ -13,6 +13,11 @@ import java.io.PrintWriter;
 public class SearchMoneyController extends HttpServlet {
 
     @Override
+    public void init() throws ServletException {
+        System.out.println("SearchMoneyController对象创建了");
+    }
+
+    @Override
     public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
         // 设置 将字节按照指定编码转换为字符串(这是get请求，也可以不设置字符集)
         request.setCharacterEncoding("utf-8");

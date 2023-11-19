@@ -7,6 +7,19 @@
     <servlet>
         <servlet-name>login</servlet-name>
         <servlet-class>controller.LoginController</servlet-class>
+        <init-param>
+            <param-name>key1</param-name>
+            <param-value>value1</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key2</param-name>
+            <param-value>value2</param-value>
+        </init-param>
+        <init-param>
+            <param-name>key3</param-name>
+            <param-value>value3</param-value>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
     </servlet>
     
     <servlet-mapping>
