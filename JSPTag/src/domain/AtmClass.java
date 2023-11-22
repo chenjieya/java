@@ -6,6 +6,15 @@ public class AtmClass {
     private String apassword;
     private Float abalance;
 
+    @Override
+    public String toString() {
+        return "AtmClass{" +
+                "aname='" + aname + '\'' +
+                ", apassword='" + apassword + '\'' +
+                ", abalance=" + abalance +
+                '}';
+    }
+
     public AtmClass() {
     }
 

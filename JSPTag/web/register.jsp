@@ -4,7 +4,7 @@
     <title>Title</title>
 </head>
 <body>
-<form action="doRegister" method="post">
+<form action="doCreateBean.jsp" method="post">
     账号： <input type="text" name="username" value=""> <br>
     密码： <input type="text" name="password" value=""> <br>
     金额： <input type="text" name="abalance" value=""> <br>
