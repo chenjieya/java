@@ -11,4 +11,13 @@
         </jsp-property-group>
     </jsp-config>
 
+    <servlet>
+        <servlet-name>register</servlet-name>
+        <servlet-class>controller.RegisterController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>register</servlet-name>
+        <url-pattern>/doRegister</url-pattern>
+    </servlet-mapping>
+
 </web-app>
