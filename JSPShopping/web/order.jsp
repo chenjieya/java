@@ -1,0 +1,46 @@
+<%@ page import="domain.ProductClass" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<html>
+<head>
+    <title>order</title>
+</head>
+<body>
+
+    <h1 style="text-align: center">订单</h1>
+
+    <table border="1" width="40%" align="center">
+        <tr>
+            <td>商品名称</td>
+            <td>商品单价</td>
+        </tr>
+
+        <%
+            ArrayList<ProductClass> selectedProduct = (ArrayList<ProductClass>)session.getAttribute("selectedProduct");
+            for (ProductClass item : selectedProduct) {
+                out.println("<tr>");
+                out.println("<td>"+item.getPname()+"</td>");
+                out.println("<td>"+item.getPrice()+"</td>");
+                out.println("</tr>");
+            }
+        %>
+
+        <tr>
+            <td colspan="2">
+
+                <%
+                    Float totalPrice = 0F;
+                    for (ProductClass item : selectedProduct) {
+                        totalPrice += item.getPrice();
+                    }
+                %>
+                计算总价：<%= totalPrice%>
+            </td>
+        </tr>
+
+    </table>
+
+
+
+</body>
+</html>

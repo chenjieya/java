@@ -33,4 +33,22 @@
             <servlet-name>category</servlet-name>
             <url-pattern>/category</url-pattern>
         </servlet-mapping>
+        <!--商品-->
+        <servlet>
+            <servlet-name>product</servlet-name>
+            <servlet-class>controller.ProductController</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>product</servlet-name>
+            <url-pattern>/product</url-pattern>
+        </servlet-mapping>
+        <!--存储商品-->
+        <servlet>
+            <servlet-name>saveProduct</servlet-name>
+            <servlet-class>controller.saveProductController</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>saveProduct</servlet-name>
+            <url-pattern>/saveProduct</url-pattern>
+        </servlet-mapping>
 </web-app>

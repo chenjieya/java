@@ -25,4 +25,9 @@ public class CategoryController extends HttpServlet {
 
         request.getRequestDispatcher("category.jsp").forward(request, response);
     }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doGet(req,resp);
+    }
 }
