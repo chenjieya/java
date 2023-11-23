@@ -23,4 +23,14 @@
             <servlet-name>register</servlet-name>
             <url-pattern>/register</url-pattern>
         </servlet-mapping>
+
+        <!--类别-->
+        <servlet>
+            <servlet-name>category</servlet-name>
+            <servlet-class>controller.CategoryController</servlet-class>
+        </servlet>
+        <servlet-mapping>
+            <servlet-name>category</servlet-name>
+            <url-pattern>/category</url-pattern>
+        </servlet-mapping>
 </web-app>
