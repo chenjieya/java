@@ -19,6 +19,15 @@
         out.println("<br>");
       }
     %>
+
+    <%
+      String login = (String) request.getAttribute("login");
+      if (login!=null) {
+        out.println(login);
+        out.println("<br>");
+      }
+    %>
+
     <form action="login" method="post">
       账号： <input type="text" name="username" value=""> <br>
       密码： <input type="password" name="password" value=""> <br>

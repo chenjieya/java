@@ -1,5 +1,8 @@
 package controller;
 
+import service.LoginService;
+import utils.MySpring;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -20,5 +23,16 @@ public class LoginController extends HttpServlet {
 
         System.out.println(username);
         System.out.println(password);
+
+        LoginService loginService = MySpring.getBean("service.LoginService");
+        String login = loginService.login(username, password);
+
+        if (login.equals("登陆成功")){
+            request.getRequestDispatcher("welcome.jsp").forward(request,response);
+        } else{
+            request.setAttribute("login", login);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
+        }
+
     }
 }
