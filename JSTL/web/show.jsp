@@ -3,7 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%--函数标签库--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-
+<%--格式化标签库--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
     <title>Title</title>
@@ -50,6 +51,10 @@
     ${fn:indexOf(requestScope.strval, "c")}<br>
 
     ${fn:replace(requestScope.strval, "c", "z")}<br>
+
+    <br>
+    <hr>
+    <fmt:formatDate value="${requestScope.date}" pattern="yyyy-MM-dd HH:mm:ss"></fmt:formatDate>
 
 
 </body>
