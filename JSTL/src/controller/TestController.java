@@ -14,6 +14,9 @@ public class TestController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        String strval = "abcdefg";
+        request.setAttribute("strval", strval);
+
         int value = 10;
 
         request.setAttribute("value", value);

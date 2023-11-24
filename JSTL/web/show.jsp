@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%--导入核心标签--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%--函数标签库--%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+
 <html>
 <head>
     <title>Title</title>
@@ -36,6 +39,17 @@
         ${UserClass.username} --  ${UserClass.password}
     </c:forEach>
 
+
+    <br>
+    <hr>
+    ${requestScope.strval} <br>
+    ${fn:length(requestScope.strval)} <br>
+
+    ${fn:contains(requestScope.strval, "c")}<br>
+
+    ${fn:indexOf(requestScope.strval, "c")}<br>
+
+    ${fn:replace(requestScope.strval, "c", "z")}<br>
 
 
 </body>
