@@ -10,5 +10,7 @@
 
       <input type="submit" value="提交">
     </form>
+
+    <a href="download?filename=可道云使用方法.md">下载文件</a>
   </body>
 </html>
