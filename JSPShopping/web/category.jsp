@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="domain.CategoryClass" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>category</title>
@@ -19,13 +20,10 @@
 
 <select name="cid" id="categoryDom">
     <option value="">请选择</option>
-    <%
-      ArrayList<CategoryClass> categoryArr = (ArrayList<CategoryClass>)request.getAttribute("categoryArr");
 
-      for (CategoryClass categoryClass : categoryArr) {
-        out.println("<option value=\""+categoryClass.getCid()+"\">"+categoryClass.getCname()+"</option>");
-      }
-    %>
+    <c:forEach var="categoryClass" items="${requestScope.categoryArr}">
+        <option value="${categoryClass.getCid()}">${categoryClass.getCname()}</option>
+    </c:forEach>
 </select>
 </body>
 </html>

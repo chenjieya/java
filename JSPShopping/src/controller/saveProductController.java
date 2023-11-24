@@ -41,6 +41,13 @@ public class saveProductController extends HttpServlet {
         if (flag.equals("继续购物")) {
             request.getRequestDispatcher("category").forward(request,response);
         } else{
+            Float totalPrice = 0F;
+
+            for (ProductClass item : selectedProduct) {
+                totalPrice += item.getPrice();
+            }
+            request.setAttribute("totalPrice", totalPrice);
+
             request.getRequestDispatcher("order.jsp").forward(request,response);
         }
 

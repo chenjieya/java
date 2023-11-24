@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="domain.ProductClass" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <head>
     <title>product</title>
@@ -32,17 +33,25 @@
                 <td>商品单价</td>
             </tr>
 
-            <%
-                ArrayList<ProductClass> productArr = (ArrayList<ProductClass>)request.getAttribute("productArr");
+            <c:forEach var="item" items="${requestScope.productArr}">
+                <tr>
+                    <td><input type="checkbox" name="pid" value="${item.getPid()}"></td>
+                    <td>${item.getPname()}</td>
+                    <td>${item.getPrice()}</td>
+                </tr>
+            </c:forEach>
 
-                for (ProductClass item : productArr) {
-                    out.println("<tr>");
-                    out.println("<td><input type=\"checkbox\" name=\"pid\" value=\""+item.getPid()+"\"></td>");
-                    out.println("<td>"+item.getPname()+"</td>");
-                    out.println("<td>"+item.getPrice()+"</td>");
-                    out.println("</tr>");
-                }
-            %>
+<%--            <%--%>
+<%--                ArrayList<ProductClass> productArr = (ArrayList<ProductClass>)request.getAttribute("productArr");--%>
+
+<%--                for (ProductClass item : productArr) {--%>
+<%--                    out.println("<tr>");--%>
+<%--                    out.println("<td><input type=\"checkbox\" name=\"pid\" value=\""+item.getPid()+"\"></td>");--%>
+<%--                    out.println("<td>"+item.getPname()+"</td>");--%>
+<%--                    out.println("<td>"+item.getPrice()+"</td>");--%>
+<%--                    out.println("</tr>");--%>
+<%--                }--%>
+<%--            %>--%>
 
             <tr>
                 <td colspan="3" align="center">
