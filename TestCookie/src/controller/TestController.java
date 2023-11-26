@@ -24,5 +24,7 @@ public class TestController extends HttpServlet {
             System.out.println(name+"---------"+value);
         }
 
+        request.getRequestDispatcher("welcome.jsp").forward(request,response);
+
     }
 }
