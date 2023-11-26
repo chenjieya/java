@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!DOCTYPE school [
-    <!ELEMENT school (class*)>
-    <!ELEMENT class (teacher,student+)>
-    <!ELEMENT teacher (sex*)>
-    <!ELEMENT student (sex*)>
-    <!ELEMENT sex (#PCDATA)>
-
-    <!ATTLIST school
-            name CDATA #REQUIRED
-    >
-    <!ATTLIST class
-            classId CDATA #REQUIRED
-    >
-    <!ATTLIST teacher
-            age CDATA #IMPLIED
-            name CDATA #REQUIRED
-            price CDATA #IMPLIED
-    >
-]>
+<!DOCTYPE school SYSTEM "school.dtd">
 
 <school name="">
     <class classId="">
