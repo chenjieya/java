@@ -2,17 +2,19 @@
 
 <!DOCTYPE school SYSTEM "school.dtd">
 
-<school name="">
-    <class classId="">
-        <teacher age="" name="" price="">
+<school name="河北蒙古族高级中学">
+    <class classId="一班">
+        <teacher age="20" name="你爹" price="10000">
             <sex>男</sex>
         </teacher>
         <student></student>
         <student></student>
     </class>
 
-    <class classId="">
-        <teacher name=""></teacher>
+    <class classId="二班">
+        <teacher name="就不告诉你">
+            <sex>女</sex>
+        </teacher>
         <student></student>
         <student></student>
     </class>
