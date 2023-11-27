@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+// 参考@WebServlet
 @WebFilter("/*")
 public class TestFilter extends HttpFilter {
 
