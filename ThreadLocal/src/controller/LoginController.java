@@ -1,7 +1,9 @@
 package controller;
 
+import domain.UserClass;
 import service.AtmService;
 import utils.MySpring;
+import utils.ThreadHandler;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -27,8 +29,13 @@ public class LoginController extends HttpServlet {
 
         if (login.equals("登录成功")) {
             // 方案一：在service中设计一个查询方法(不好，明明已经查出了用户对象，该方法又去查询了一次)
-            String nickName = atmService.getNickName(username);
-            request.setAttribute("nickName", nickName);;
+            // String nickName = atmService.getNickName(username);
+            // request.setAttribute("nickName", nickName);;
+
+            // 方案三：
+            ThreadLocal threadLocal = ThreadHandler.getThreadLocal(username);
+            UserClass o = (UserClass)threadLocal.get();
+            request.setAttribute("nickName", o.getNickname());
 
             request.getRequestDispatcher("welcome.jsp").forward(request,response);
         } else {
