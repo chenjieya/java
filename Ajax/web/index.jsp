@@ -6,7 +6,7 @@
     <script>
       window.onload = function() {
         document.getElementById("register").onclick = function () {
-          window.location.href = "selectCountry.jsp";
+          window.location.href = "selectCountry";
         }
       }
     </script>

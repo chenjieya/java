@@ -18,6 +18,11 @@ public class CountryController extends HttpServlet {
     private CountryService countryService = MySpring.getBean("service.CountryService");
 
     @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        this.doPost(req,resp);
+    }
+
+    @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
 

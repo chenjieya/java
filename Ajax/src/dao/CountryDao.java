@@ -10,8 +10,8 @@ import java.util.ArrayList;
 
 public class CountryDao {
 
-    private String drive = "com.mysql.cj.jdbc.Drive";
-    private String url = "jdbc:mysql://localhost:3306/test";
+    private String drive = "com.mysql.cj.jdbc.Driver";
+    private String url = "jdbc:mysql://localhost:3306/constrans";
     private String user = "root";
     private String pwd = "chenjie+00";
 
@@ -21,7 +21,7 @@ public class CountryDao {
         ArrayList<CountryClass> list = null;
 
         try {
-            Class.forName(drive);
+            Class.forName(this.drive);
             Connection connection = DriverManager.getConnection(this.url, this.user, this.pwd);
 
             String sql = "SELECT CID,CNAME FROM COUNTRY";
