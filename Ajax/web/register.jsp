@@ -6,7 +6,23 @@
 
     <script>
       window.onload = function () {
+        document.getElementById("country").onchange = function () {
+          var xmlHttp = new XMLHttpRequest();
+          xmlHttp.open("post", "area?cid="+this.value+"");
+          xmlHttp.send();
 
+          xmlHttp.onreadystatechange = function () {
+
+            if (this.readyState === 4 && this.status === 200) {
+
+              var obj = JSON.parse(this.responseText);
+              console.log(obj);
+
+            }
+
+          }
+
+        }
       }
     </script>
 </head>
@@ -14,7 +30,7 @@
   <form action="regiter" method="post">
     <input type="text" name="username" placeholder="账号"> <br>
     <input type="password" name="password" placeholder="密码"> <br>
-    <select name="country">
+    <select name="country" id="country">
       <option value="">==请选择国家==</option>
       <c:forEach var="item" items="${requestScope.country}">
         <option value="${item.getCid()}">${item.getCname()}</option>
