@@ -22,7 +22,7 @@
     </select>
 
     <select id="selectNameById" resultType="java.lang.String">
-        select s_name from student where s_id = 6;
+        select s_name from student where s_id = #{s_id};
     </select>
 
     <select id="selectSexCount" resultType="hashMap">
@@ -32,5 +32,11 @@
     <update id="update">
         update student set s_name = #{s_name} where s_id = #{s_id};
     </update>
+    
+    <update id="updateMap">
+        update student set s_sex = #{s_sex} where s_id = #{s_id};
+    </update>
+
+
 </mapper>
 

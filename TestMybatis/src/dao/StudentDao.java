@@ -12,6 +12,14 @@ import java.util.Map;
 @SuppressWarnings("all")
 public class StudentDao {
 
+    public void updateMap(Map<String, Object> student) {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = build.openSession(true);
+
+        sqlSession.update("updateMap", student);
+    }
+
     public void update(StudentClass student) {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
@@ -38,12 +46,12 @@ public class StudentDao {
 
 
     // 设计一个方法，返回值类型是String类型
-    public void selectNameById() {
+    public void selectNameById(int id) {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
         SqlSession sqlSession = build.openSession(true);
 
-        String result = sqlSession.selectOne("selectNameById");
+        String result = sqlSession.selectOne("selectNameById", id);
         System.out.println(result);  //陈文杰
     }
 
