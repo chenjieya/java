@@ -14,10 +14,14 @@ public class Main {
 //        studentDao.selectOne();
 
 
-        List<StudentClass> studentClasses = studentDao.selectAll();
+//        List<StudentClass> studentClasses = studentDao.selectAll();
+//
+//        for (StudentClass studentClass : studentClasses) {
+//            System.out.println(studentClass);
+//        }
 
-        for (StudentClass studentClass : studentClasses) {
-            System.out.println(studentClass);
-        }
+
+        studentDao.selectCount();
+
     }
 }

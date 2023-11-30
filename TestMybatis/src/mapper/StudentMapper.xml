@@ -16,5 +16,9 @@
     <select id="selectAll" resultType="domain.StudentClass">
         select * from student;
     </select>
+
+    <select id="selectCount" resultType="int">
+        select count(*) from student;
+    </select>
 </mapper>
 
