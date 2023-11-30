@@ -7,13 +7,32 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 @SuppressWarnings("all")
 public class StudentDao {
 
+    // 设计一个方法，返回值类型是List<Map>
+    public List<Map<String, Object>> selectSexCount() {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = build.openSession(true);
+
+        List<Map<String, Object>> result = sqlSession.selectList("selectSexCount");
+
+        return result;
+    }
+
 
     // 设计一个方法，返回值类型是String类型
+    public void selectNameById() {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = build.openSession(true);
 
+        String result = sqlSession.selectOne("selectNameById");
+        System.out.println(result);  //陈文杰
+    }
 
     // 设计一个方法，返回值是基本数据类型
     public int selectCount() {

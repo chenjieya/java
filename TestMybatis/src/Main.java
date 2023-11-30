@@ -2,6 +2,7 @@ import dao.StudentDao;
 import domain.StudentClass;
 
 import java.util.List;
+import java.util.Map;
 
 // Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
 // then press Enter. You can now see whitespace characters in your code.
@@ -21,7 +22,15 @@ public class Main {
 //        }
 
 
-        studentDao.selectCount();
+//        studentDao.selectCount();
+
+//        studentDao.selectNameById();
+
+        List<Map<String, Object>> maps = studentDao.selectSexCount();
+
+        for (Map<String, Object> item : maps) {
+            System.out.println(item);
+        }
 
     }
 }

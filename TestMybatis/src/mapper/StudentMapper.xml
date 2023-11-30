@@ -20,5 +20,13 @@
     <select id="selectCount" resultType="int">
         select count(*) from student;
     </select>
+
+    <select id="selectNameById" resultType="java.lang.String">
+        select s_name from student where s_id = 6;
+    </select>
+
+    <select id="selectSexCount" resultType="hashMap">
+        select s_sex,count(*) from student group by s_sex;
+    </select>
 </mapper>
 
