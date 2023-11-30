@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace:写dao类全名-->
+<mapper namespace="dao.StudentDao">
+    <insert id="insertStudent">
+        INSERT INTO student VALUES(6, "陈文杰", "nan", NOW(), "hangzhou", 100.00, 100.00,100.00, 100.00, 1)
+    </insert>
+</mapper>
+
