@@ -26,11 +26,15 @@ public class Main {
 
 //        studentDao.selectNameById();
 
-        List<Map<String, Object>> maps = studentDao.selectSexCount();
-
-        for (Map<String, Object> item : maps) {
-            System.out.println(item);
-        }
+//        List<Map<String, Object>> maps = studentDao.selectSexCount();
+//
+//        for (Map<String, Object> item : maps) {
+//            System.out.println(item);
+//        }
+        StudentClass studentClass = new StudentClass();
+        studentClass.setS_id(4);
+        studentClass.setS_name("alvis_pluse");
+        studentDao.update(studentClass);
 
     }
 }

@@ -12,6 +12,19 @@ import java.util.Map;
 @SuppressWarnings("all")
 public class StudentDao {
 
+    public void update(StudentClass student) {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = build.openSession(true);
+
+        /**
+         * 将对象传递进去
+         *  sql： #{s_name}形式
+         *  底层通过反射找到对象的类，然后找到对象的属性值
+         */
+        sqlSession.update("update", student);
+    }
+
     // 设计一个方法，返回值类型是List<Map>
     public List<Map<String, Object>> selectSexCount() {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();

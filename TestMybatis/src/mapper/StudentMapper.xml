@@ -28,5 +28,9 @@
     <select id="selectSexCount" resultType="hashMap">
         select s_sex,count(*) from student group by s_sex;
     </select>
+
+    <update id="update">
+        update student set s_name = #{s_name} where s_id = #{s_id};
+    </update>
 </mapper>
 
