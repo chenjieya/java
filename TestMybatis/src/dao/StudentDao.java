@@ -1,5 +1,6 @@
 package dao;
 
+import domain.StudentClass;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
@@ -7,6 +8,19 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import java.io.InputStream;
 
 public class StudentDao {
+
+    public void selectOne() {
+
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        InputStream resourceAsStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml");
+        SqlSessionFactory build = builder.build(resourceAsStream);
+        SqlSession sqlSession = build.openSession(true);
+
+        // 会根据xml配置文件，存到对应的domain实体类中
+        StudentClass stu = sqlSession.selectOne("selectOne");
+
+        System.out.println(stu);
+    }
 
     public void insert() {
 

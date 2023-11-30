@@ -6,6 +6,8 @@ public class Main {
     public static void main(String[] args) {
         // 测试mybatis新增
         StudentDao studentDao = new StudentDao();
-        studentDao.insert();
+//        studentDao.insert();
+
+        studentDao.selectOne();
     }
 }

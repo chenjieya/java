@@ -7,5 +7,9 @@
     <insert id="insertStudent">
         INSERT INTO student VALUES(6, "陈文杰", "nan", NOW(), "hangzhou", 100.00, 100.00,100.00, 100.00, 1)
     </insert>
+    <!--id: 名称标识  resultType：返回值类型-->
+    <select id="selectOne" resultType="domain.StudentClass">
+        select * from student where s_id = 1;
+    </select>
 </mapper>
 
