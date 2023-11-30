@@ -12,6 +12,16 @@ import java.util.Map;
 @SuppressWarnings("all")
 public class StudentDao {
 
+    public List<StudentClass> selectOrder(String flag) {
+
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = build.openSession(true);
+
+        List<StudentClass> result = sqlSession.selectList("selectOrder", flag);
+        return result;
+    }
+
     public void updateMap(Map<String, Object> student) {
         SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
         SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));

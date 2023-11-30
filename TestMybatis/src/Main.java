@@ -38,12 +38,18 @@ public class Main {
 //        studentClass.setS_name("alvis_pluse");
 //        studentDao.update(studentClass);
 
-        Map<String, Object> map = new HashMap<>();
-        map.put("s_sex", "nv");
-        map.put("s_id", 6);
-        studentDao.updateMap(map);
+//        Map<String, Object> map = new HashMap<>();
+//        map.put("s_sex", "nv");
+//        map.put("s_id", 6);
+//        studentDao.updateMap(map);
+//
+//        studentDao.selectNameById(6);
 
-        studentDao.selectNameById(6);
+        List<StudentClass> studentClasses = studentDao.selectOrder("desc");
+
+        for (StudentClass item : studentClasses) {
+            System.out.println(item);
+        }
 
     }
 }

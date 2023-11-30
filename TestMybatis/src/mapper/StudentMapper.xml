@@ -37,6 +37,9 @@
         update student set s_sex = #{s_sex} where s_id = #{s_id};
     </update>
 
+   <select id="selectOrder" resultType="domain.StudentClass">
+       select * from student order by s_id ${flag};
+   </select>
 
 </mapper>
 
