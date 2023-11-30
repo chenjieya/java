@@ -12,6 +12,22 @@ import java.util.List;
 public class StudentDao {
 
 
+    // 设计一个方法，返回值类型是String类型
+
+
+    // 设计一个方法，返回值是基本数据类型
+    public int selectCount() {
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory build = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = build.openSession(true);
+
+        int result = sqlSession.selectOne("selectCount");
+
+        System.out.println(result);
+
+        return result;
+    }
+
 
     // 设计一个方法，返回值是所有的数据
     public List<StudentClass> selectAll() {
