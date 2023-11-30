@@ -11,5 +11,10 @@
     <select id="selectOne" resultType="domain.StudentClass">
         select * from student where s_id = 1;
     </select>
+
+    <!--返回类型是每一行的类型-->
+    <select id="selectAll" resultType="domain.StudentClass">
+        select * from student;
+    </select>
 </mapper>
 

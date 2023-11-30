@@ -6,8 +6,26 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
+import java.util.List;
 
+@SuppressWarnings("all")
 public class StudentDao {
+
+
+
+    // 设计一个方法，返回值是所有的数据
+    public List<StudentClass> selectAll() {
+
+        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+        SqlSessionFactory factory = builder.build(Thread.currentThread().getContextClassLoader().getResourceAsStream("configuration.xml"));
+        SqlSession sqlSession = factory.openSession(true);
+
+        // 此处只能写List。不能写ArrayList
+        List<StudentClass> result = sqlSession.selectList("selectAll");
+
+        return result;
+    }
+
 
     public void selectOne() {
 
