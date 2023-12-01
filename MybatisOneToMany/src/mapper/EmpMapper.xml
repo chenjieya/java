@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.EmpDao">
+
+    <resultMap id="empnoBydeptForEmp" type="domain.EmpClass">
+        <id property="empno" column="empno"></id>
+        <result property="ename" column="ename"></result>
+        <result property="job" column="job"></result>
+        <result property="mgr" column="mgr"></result>
+        <result property="hiredate" column="hiredate"></result>
+        <result property="sal" column="sal"></result>
+        <result property="comm" column="comm"></result>
+        <association property="deptno" javaType="domain.DeptClass" column="deptno" select="selectDeptForEmp"></association>
+    </resultMap>
+    <!--根据部门编号，查找员工得部门，为了emp.selectOne服务-->
+    <select id="selectDeptForEmp" resultType="domain.DeptClass">
+        select deptno,dname,loc from dept where deptno = #{deptno};
+    </select>
+
+
+    <!--============================================================================================-->
+
+    <!--根据员工编号，查找员工信息-->
+    <select id="selectOne" resultMap="empnoBydeptForEmp">
+        select empno,ename,job,mgr,hiredate,sal,comm,deptno from emp where empno = #{empno};
+    </select>
+
+</mapper>
