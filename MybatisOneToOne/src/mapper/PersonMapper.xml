@@ -21,4 +21,9 @@
     <select id="selectOne" resultMap="personAndCard">
         select pid,pname,cardid from person where pid = #{pid};
     </select>
+
+    <select id="selectAll" resultMap="personAndCard">
+        select pid, pname, cardid from person;
+    </select>
+
 </mapper>
