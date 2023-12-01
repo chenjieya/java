@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.PersonDao">
+    <!--自定义类型-->
+    <resultMap id="personAndCard" type="domain.Person">
+        <!--主键-->
+        <id property="pid" column="pid"></id>
+        <!--其他列-->
+        <result property="pname" column="pname"></result>
+        <!--Card对象-->
+        <association column="cardid" select="selectCardForPerson" property="cardid" javaType="domain.CardID"></association>
+    </resultMap>
+
+    <select id="selectCardForPerson" resultType="domain.CardID">
+        select * from id_card where cardid = #{cardid};
+    </select>
+
+    <!--resultMap是自定义返回类型-->
+    <select id="selectOne" resultMap="personAndCard">
+        select pid,pname,cardid from person where pid = #{pid};
+    </select>
+</mapper>
