@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.CardDao">
+    
+    <resultMap id="cardAndPerson" type="domain.CardID">
+        <id property="cardid" column="cardid"></id>
+        <result property="card_address" column="card_address"></result>
+        <association property="person" javaType="domain.Person">
+            <id property="pid" column="pid"></id>
+            <!--其他列-->
+            <result property="pname" column="pname"></result>
+        </association>
+    </resultMap>
+
+
+    <select id="selectOneCard" resultMap="cardAndPerson">
+        select p.pid,p.pname,c.cardid,c.card_address  from id_card c inner join person p on c.cardid = p.cardid where c.cardid = #{cardid};
+    </select>
+
+    <select id="selectAllCard" resultMap="cardAndPerson">
+        select p.pid,p.pname,c.cardid,c.card_address from id_card c inner join person p on c.cardid = p.cardid;
+    </select>
+
+</mapper>
