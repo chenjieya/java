@@ -14,7 +14,9 @@ public class Main {
 
         List<Person> selectAll = service.selectAll();
         for (Person item : selectAll) {
-            System.out.println(item);
+            // 我用到的都是Person的属性和方法，并没有使用Card的。这个时候为了提高效率，使用懒加载
+            System.out.println(item.getPname());
+            System.out.println(item.getPid());
         }
     }
 }
