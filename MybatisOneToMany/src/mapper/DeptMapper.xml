@@ -3,5 +3,25 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.DeptDao">
+    <resultMap id="deptnoForEmp" type="domain.DeptClass">
+        <id property="deptno" column="deptno"></id>
+        <result property="dname" column="dname"></result>
+        <result property="loc" column="loc"></result>
+        <collection property="empList" javaType="list" ofType="domain.EmpClass">
+            <id property="empno" column="empno"></id>
+            <result property="ename" column="ename"></result>
+            <result property="job" column="job"></result>
+            <result property="mgr" column="mgr"></result>
+            <result property="hiredate" column="hiredate"></result>
+            <result property="sal" column="sal"></result>
+            <result property="comm" column="comm"></result>
+        </collection>
+    </resultMap>
 
+
+
+
+    <select id="selectOneByDept" resultMap="deptnoForEmp">
+        select d.deptno,d.dname,d.loc,e.empno,e.ename,e.job,e.mgr,e.hiredate,e.sal,e.comm from dept d inner join emp e on e.deptno = d.deptno where d.deptno = #{deptno};
+    </select>
 </mapper>
