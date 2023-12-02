@@ -15,7 +15,7 @@ public class DeptDao {
     }
 
     public List<DeptClass> selectAll() {
-        return sqlSession.selectList("selectAll");
+        return sqlSession.selectList("selectAllByDept");
     }
 
 }

@@ -24,5 +24,11 @@ public class Main {
         DeptService deptService = MySpring.getBean("service.DeptService");
         DeptClass deptClass = deptService.selectOne(10);
         System.out.println(deptClass);
+
+        List<DeptClass> deptClasses = deptService.selectAll();
+
+        for (DeptClass item : deptClasses) {
+            System.out.println(item+" ~~~~ ");
+        }
     }
 }

@@ -24,4 +24,25 @@
     <select id="selectOneByDept" resultMap="deptnoForEmp">
         select d.deptno,d.dname,d.loc,e.empno,e.ename,e.job,e.mgr,e.hiredate,e.sal,e.comm from dept d inner join emp e on e.deptno = d.deptno where d.deptno = #{deptno};
     </select>
+
+
+
+    <!--=======================================================-->
+
+    <resultMap id="deptForEmpAll" type="domain.DeptClass">
+        <id property="deptno" column="deptno"></id>
+        <result property="dname" column="dname"></result>
+        <result property="loc" column="loc"></result>
+        <collection property="empList" javaType="list" ofType="domain.EmpClass" column="deptno" select="selectAllDeptAndEmp"></collection>
+    </resultMap>
+    <select id="selectAllDeptAndEmp" resultType="domain.EmpClass">
+        select empno,ename,job,mgr,hiredate,sal,comm from emp where deptno = #{deptno};
+    </select>
+
+
+    <select id="selectAllByDept" resultMap="deptForEmpAll">
+        select deptno,dname,loc from dept;
+    </select>
+
+
 </mapper>
