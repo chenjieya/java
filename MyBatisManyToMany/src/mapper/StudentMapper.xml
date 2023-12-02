@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="dao.StudentDao">
+
+    
+    <resultMap id="stuToTeaForStudent" type="domain.StudentClass">
+        <id property="sid" column="sid"/>
+        <result property="tname" column="tname" />
+        <collection property="tid" column="sid" javaType="list" ofType="domain.TeacherClass" select="stuByTeaSelect"/>
+    </resultMap>
+
+    <select id="stuByTeaSelect" resultType="domain.TeacherClass">
+        select t.* from tea_stu ts inner join teacher t on ts.tid = t.tid where ts.sid = #{sid};
+    </select>
+
+    <select id="selectOneByStudent" resultMap="stuToTeaForStudent">
+        select sid,sname from student where sid = #{sid};
+    </select>
+
+
+
+    <select id="selectOneByStudentAll" resultMap="stuToTeaForStudent">
+        select sid, sname from student;
+    </select>
+
+</mapper>
