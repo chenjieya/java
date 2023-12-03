@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script>
+        window.onload = function () {
+            var jobSelectDom = document.getElementById("jobSelect");
+            var deptnoSelectDom = document.getElementById("deptnoSelect");
+            var orderbySelectDom = document.getElementById("orderbySelect");
+            var searchBtnDom = document.getElementById("searchBtn");
+
+            var xmlHttpRequest = new XMLHttpRequest();
+            xmlHttpRequest.open("post", "serachList", true);
+            xmlHttpRequest.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    // 请求成功
+                    var result = JSON.parse(this.responseText);
+                    console.log(result, 'result');
+
+                    var jobList = result.jobList;
+                    var deptnoList = result.deptnoList;
+
+
+                    for (var i = 0; i < jobList.length; i++){
+                        var ele = document.createElement("option");
+                        ele.value = jobList[i];
+                        ele.innerHTML = jobList[i];
+                        jobSelectDom.appendChild(ele);
+                    }
+
+                    for (var i = 0; i < deptnoList.length; i++){
+                        var ele = document.createElement("option");
+                        ele.value = deptnoList[i];
+                        ele.innerHTML = deptnoList[i];
+                        deptnoSelectDom.appendChild(ele);
+                    }
+
+
+
+                }
+            }
+            xmlHttpRequest.send();
+
+
+            searchBtnDom.onclick = function () {
+                var xmlHttpRequest1 = new XMLHttpRequest();
+
+                xmlHttpRequest1.open("post", "selectInfo", true);
+                xmlHttpRequest1.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+                xmlHttpRequest1.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        // 响应结果
+                        var parse = JSON.parse(this.responseText);
+                        console.log(parse, 'parse');
+                    }
+                }
+                xmlHttpRequest1.send("job="+jobSelectDom.value+"&deptno="+deptnoSelectDom.value+"&orderby="+orderbySelectDom.value+"");
+            }
+
+
+        }
+    </script>
+
+</head>
+<body>
+
+<form action="">
+
+    <div align="center">
+        job:
+        <select name="" id="jobSelect">
+            <option value="">请选择</option>
+        </select>
+
+        deptno:
+        <select name="" id="deptnoSelect">
+            <option value="">请选择</option>
+        </select>
+
+        orderby:
+        <select name="" id="orderbySelect">
+            <option value="desc">DESC</option>
+            <option value="asc">ASC</option>
+        </select>
+
+        <input type="button" id="searchBtn" value="查询">
+    </div>
+
+    <table align="center" border="1" style="margin-top: 20px;">
+        <tr>
+            <th>empno</th>
+            <th>ename</th>
+            <th>job</th>
+            <th>mgr</th>
+            <th>hiredate</th>
+            <th>sal</th>
+            <th>comm</th>
+            <th>deptno</th>
+        </tr>
+    </table>
+
+
+</form>
+
+
+</body>
+</html>
