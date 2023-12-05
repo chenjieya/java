@@ -1,4 +1,6 @@
+import domain.Person;
 import domain.StudentClass;
+import service.PersonCardService;
 import service.StudentService;
 
 import java.util.List;
@@ -25,9 +27,17 @@ public class Main {
 //            System.out.println(item);
 //        }
 
-        Map map = studentService.selectCount();
+//        Map map = studentService.selectCount();
+//        System.out.println(map);
 
-        System.out.println(map);
+        PersonCardService service = new PersonCardService();
+//        Person person = service.selectByPerson(1);
+//        System.out.println(person);
+
+        List<Person> selectAll = service.selectAll();
+        for (Person item : selectAll) {
+            System.out.println(item);
+        }
 
     }
 }

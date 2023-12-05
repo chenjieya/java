@@ -16,5 +16,6 @@
     </environments>
     <mappers>
         <mapper class="dao.StudentDao"/>
+        <mapper class="dao.PersonCardDao"/>
     </mappers>
 </configuration>
