@@ -39,4 +39,7 @@ public interface EmpDao {
     // 类中使用了默认得方法，注解不需要写方法。如果不是默认方法，则需要写method=方法
     @SelectProvider(DynamicSql.class)
     public List<Emp> selectBySearch(@Param("job") String job, @Param("comm") Float comm);
+
+    @SelectProvider(type = DynamicSql.class, method = "selectBySearchEmpNo")
+    public List<Emp> selectBySearchEmpNo(@Param("empnos") Integer[] empnos);
 }

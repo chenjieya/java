@@ -23,4 +23,8 @@ public class EmpService {
         return empDao.selectBySearch(job,comm);
     }
 
+    public List<Emp> selectBySearchEmpNo(Integer ...empnos) {
+        return empDao.selectBySearchEmpNo(empnos);
+    }
+
 }

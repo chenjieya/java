@@ -46,7 +46,18 @@ public class Main {
         EmpService service = new EmpService();
 
         // 通过传递job、deptno查询结果
-        List<Emp> emps = service.selectBySearch("SALESMAN", 300F);
+//        List<Emp> emps = service.selectBySearch("SALESMAN", 300F);
+//
+//        for (Emp item : emps) {
+//            System.out.println(item);
+//        }
+
+        /**
+         * 7499
+         * 7521
+         * 7788
+         */
+        List<Emp> emps = service.selectBySearchEmpNo(7499,7521,7788);
 
         for (Emp item : emps) {
             System.out.println(item);
