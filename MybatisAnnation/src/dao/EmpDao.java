@@ -2,6 +2,7 @@ package dao;
 
 import domain.Dept;
 import domain.Emp;
+import dynamic.DynamicSql;
 import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.mapping.FetchType;
 
@@ -33,4 +34,9 @@ public interface EmpDao {
     @Select("select empno,ename,job,mgr,hiredate,sal,comm,deptno from emp")
     @ResultMap("selectOne")
     public List<Emp> selectAll();
+
+
+    // 类中使用了默认得方法，注解不需要写方法。如果不是默认方法，则需要写method=方法
+    @SelectProvider(DynamicSql.class)
+    public List<Emp> selectBySearch(@Param("job") String job, @Param("comm") Float comm);
 }

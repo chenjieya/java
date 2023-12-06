@@ -18,4 +18,9 @@ public class EmpService {
         return empDao.selectAll();
     }
 
+    // 通过传递job、deptno查询结果
+    public List<Emp> selectBySearch(String job, Float comm) {
+        return empDao.selectBySearch(job,comm);
+    }
+
 }

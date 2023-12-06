@@ -43,7 +43,16 @@ public class Main {
 //            System.out.println(item);
 //        }
 
-//        EmpService service = new EmpService();
+        EmpService service = new EmpService();
+
+        // 通过传递job、deptno查询结果
+        List<Emp> emps = service.selectBySearch("SALESMAN", 300F);
+
+        for (Emp item : emps) {
+            System.out.println(item);
+        }
+
+
 //        Emp emp = service.selectOne(7369);
 //        System.out.println(emp);
 
@@ -52,15 +61,15 @@ public class Main {
 //            System.out.println(item);
 //        }
 
-        DeptService deptService = new DeptService();
+//        DeptService deptService = new DeptService();
 //        Dept dept = deptService.selectOne(10);
 //        System.out.println(dept);
 
-        List<Dept> depts = deptService.selectAll();
-
-        for (Dept item : depts) {
-            System.out.println(item);
-        }
+//        List<Dept> depts = deptService.selectAll();
+//
+//        for (Dept item : depts) {
+//            System.out.println(item);
+//        }
 
     }
 }
