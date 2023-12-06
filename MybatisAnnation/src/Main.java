@@ -1,5 +1,9 @@
+import domain.Dept;
+import domain.Emp;
 import domain.Person;
 import domain.StudentClass;
+import service.DeptService;
+import service.EmpService;
 import service.PersonCardService;
 import service.StudentService;
 
@@ -30,12 +34,31 @@ public class Main {
 //        Map map = studentService.selectCount();
 //        System.out.println(map);
 
-        PersonCardService service = new PersonCardService();
+//        PersonCardService service = new PersonCardService();
 //        Person person = service.selectByPerson(1);
 //        System.out.println(person);
 
-        List<Person> selectAll = service.selectAll();
-        for (Person item : selectAll) {
+//        List<Person> selectAll = service.selectAll();
+//        for (Person item : selectAll) {
+//            System.out.println(item);
+//        }
+
+//        EmpService service = new EmpService();
+//        Emp emp = service.selectOne(7369);
+//        System.out.println(emp);
+
+//        List<Emp> emps = service.selectAll();
+//        for (Emp item : emps) {
+//            System.out.println(item);
+//        }
+
+        DeptService deptService = new DeptService();
+//        Dept dept = deptService.selectOne(10);
+//        System.out.println(dept);
+
+        List<Dept> depts = deptService.selectAll();
+
+        for (Dept item : depts) {
             System.out.println(item);
         }
 

@@ -17,5 +17,7 @@
     <mappers>
         <mapper class="dao.StudentDao"/>
         <mapper class="dao.PersonCardDao"/>
+        <mapper class="dao.EmpDao"/>
+        <mapper class="dao.DeptDao"/>
     </mappers>
 </configuration>

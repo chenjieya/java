@@ -3,6 +3,7 @@ package dao;
 import domain.CardId;
 import domain.Person;
 import org.apache.ibatis.annotations.*;
+import org.apache.ibatis.mapping.FetchType;
 
 import javax.smartcardio.Card;
 import java.util.List;
@@ -15,7 +16,7 @@ public interface PersonCardDao {
             value = {
                     @Result(property = "pid", column = "pid", id = true),
                     @Result(property = "pname", column = "pname"),
-                    @Result(property = "cardId", column = "cardid", javaType = CardId.class, one = @One(select = "selectByCard"))
+                    @Result(property = "cardId", column = "cardid", javaType = CardId.class, one = @One(select = "selectByCard", fetchType = FetchType.LAZY))
             }
     )
     public Person selectByPerson(Integer pid);
