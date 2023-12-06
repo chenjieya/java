@@ -5,14 +5,6 @@ public class Student {
     private Integer sid;
     private String sname;
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "sid=" + sid +
-                ", sname='" + sname + '\'' +
-                '}';
-    }
-
     public Integer getSid() {
         return sid;
     }

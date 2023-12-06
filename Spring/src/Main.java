@@ -25,5 +25,10 @@ public class Main {
 
         // 写法四：在基础xml配置文件中，直接引入其他文件
 
+        BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
+        Student stu = (Student)factory.getBean("student");
+        Student stu1 = (Student)factory.getBean("student");
+        System.out.println(stu);
+        System.out.println(stu1);
     }
 }
