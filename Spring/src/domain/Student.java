@@ -27,5 +27,6 @@ public class Student {
     }
 
     public Student() {
+        System.out.println("构造函数");
     }
 }

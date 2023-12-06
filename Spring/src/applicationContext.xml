@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="student" class="domain.Student" scope="prototype"></bean>
+    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true"></bean>
     <!--引入其他配置文件-->
 <!--    <import resource="applicationContext_controller.xml"></import>-->
 <!--    <import resource="applicationContext_dao.xml"></import>-->
