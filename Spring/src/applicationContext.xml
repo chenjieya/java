@@ -78,6 +78,17 @@
         </bean>
 
 
+    <bean name="testProperties" class="dao.PropertiesDao">
+        <constructor-arg name="properties">
+            <props>
+                <prop key="1">aaa</prop>
+                <prop key="2">bbb</prop>
+                <prop key="3">ccc</prop>
+            </props>
+        </constructor-arg>
+    </bean>
+
+
 
 
 </beans>

@@ -1,7 +1,11 @@
+import dao.PropertiesDao;
 import domain.Computer;
 import domain.Room;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Enumeration;
+import java.util.Properties;
 
 public class Main {
     public static void main(String[] args) {
@@ -34,25 +38,35 @@ public class Main {
 //        System.out.println(controllers);
 
 
-        Room room = (Room)factory.getBean("room");
+//        Room room = (Room)factory.getBean("room");
+//
+//        Integer roomId = room.getRoomId();
+//        String rname = room.getRname();
+//        String[] ids = room.getIds();
+//        Computer[] computers = room.getComputers();
+//        System.out.println(roomId);
+//        System.out.println("====================================");
+//        System.out.println(rname);
+//        System.out.println("====================================");
+//        for (String item : ids) {
+//            System.out.println(item);
+//        }
+//        System.out.println("====================================");
+//        for (Computer computer : computers) {
+//            System.out.println(computer);
+//        }
 
-        Integer roomId = room.getRoomId();
-        String rname = room.getRname();
-        String[] ids = room.getIds();
-        Computer[] computers = room.getComputers();
-        System.out.println(roomId);
-        System.out.println("====================================");
-        System.out.println(rname);
-        System.out.println("====================================");
-        for (String item : ids) {
-            System.out.println(item);
+        PropertiesDao dao = (PropertiesDao)factory.getBean("testProperties");
+
+        Properties properties = dao.getProperties();
+
+        Enumeration<?> enumeration = properties.propertyNames();
+
+        while (enumeration.hasMoreElements()) {
+            String key = (String)enumeration.nextElement();
+            String value = properties.getProperty(key);
+            System.out.println(key + "=" + value);
         }
-        System.out.println("====================================");
-        for (Computer computer : computers) {
-            System.out.println(computer);
-        }
-
-
 
 
     }
