@@ -9,6 +9,14 @@ public class Student {
         return sid;
     }
 
+    @Override
+    public String toString() {
+        return "Student{" +
+                "sid=" + sid +
+                ", sname='" + sname + '\'' +
+                '}';
+    }
+
     public void setSid(Integer sid) {
         this.sid = sid;
     }

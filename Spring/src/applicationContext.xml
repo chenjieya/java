@@ -4,7 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true"></bean>
+    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true">
+        <!--
+            通过set函数设置属性
+            Class.forname("").newInstance()
+            // 获取到所有属性
+            // 找到属性的类型
+            // 循环赋值
+        -->
+        <property name="sid" value="1"></property>
+        <property name="sname" value="abc"></property>
+    </bean>
     <!--引入其他配置文件-->
 <!--    <import resource="applicationContext_controller.xml"></import>-->
 <!--    <import resource="applicationContext_dao.xml"></import>-->

@@ -27,8 +27,6 @@ public class Main {
 
         BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
         Student stu = (Student)factory.getBean("student");
-        Student stu1 = (Student)factory.getBean("student");
         System.out.println(stu);
-        System.out.println(stu1);
     }
 }
