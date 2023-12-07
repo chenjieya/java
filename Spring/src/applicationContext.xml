@@ -33,15 +33,27 @@
 
 
 
-    <bean name="controller" class="controller.StudentController">
-        <property name="service">
-            <bean class="service.StudentService">
-                <property name="studentDao" ref="studentDaoClass"></property>
-            </bean>
-        </property>
-    </bean>
+<!--    <bean name="controller" class="controller.StudentController">-->
+<!--        <property name="service">-->
+<!--            <bean class="service.StudentService">-->
+<!--                <property name="studentDao" ref="studentDaoClass"></property>-->
+<!--            </bean>-->
+<!--        </property>-->
+<!--    </bean>-->
 
-    <bean name="studentDaoClass" class="dao.StudentDao"></bean>
+<!--    <bean name="studentDaoClass" class="dao.StudentDao"></bean>-->
+
+
+
+<!--    <bean name="daoObj" class="dao.StudentDao"></bean>-->
+<!--    <bean name="serviceObj" class="service.StudentService" autowire="constructor"></bean>-->
+<!--    <bean name="controllerObj" class="controller.StudentController" autowire="constructor"></bean>-->
+
+
+    <bean name="studentDao" class="dao.StudentDao"></bean>
+    <bean name="service" class="service.StudentService" autowire="byName"></bean>
+    <bean name="controllerObj" class="controller.StudentController" autowire="byName"></bean>
+
 
 
 </beans>

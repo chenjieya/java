@@ -6,7 +6,13 @@ public class StudentController {
 
     private StudentService service = new StudentService();
 
-    public StudentController() {}
+    public StudentController() {
+        System.out.println("controller无参数构造函数");
+    }
+
+    public StudentController(StudentService service) {
+        this.service = service;
+    }
 
     @Override
     public String toString() {
@@ -20,6 +26,7 @@ public class StudentController {
     }
 
     public void setService(StudentService service) {
+        System.out.println("controler设置参数");
         this.service = service;
     }
 

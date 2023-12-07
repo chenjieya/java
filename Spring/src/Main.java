@@ -29,9 +29,9 @@ public class Main {
         BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        Student stu = (Student)factory.getBean("student");
 //        System.out.println(stu);
-        StudentController controller = (StudentController) factory.getBean("controller");
+        StudentController controllers = (StudentController) factory.getBean("controllerObj");
 
-        System.out.println(controller);
+        System.out.println(controllers);
 
 
     }

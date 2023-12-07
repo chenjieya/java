@@ -9,4 +9,8 @@ public class StudentDao {
     }
 
 
+    @Override
+    public String toString() {
+        return "StudentDao{}";
+    }
 }
