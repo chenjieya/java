@@ -27,7 +27,7 @@
         -->
         <constructor-arg name="sid" value="1" type="java.lang.Integer"></constructor-arg>
         <constructor-arg name="sname">
-            <value>名字</value>
+            <value><![CDATA[<cj~.>]]></value>
         </constructor-arg>
     </bean>
 
