@@ -4,20 +4,31 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true">
-        <!--
-            通过set函数设置属性
-            Class.forname("").newInstance()
-            // 获取到所有属性
-            // 找到属性的类型
-            // 循环赋值
-        -->
-        <property name="sid" value="1"></property>
-        <property name="sname" value="abc"></property>
-    </bean>
+<!--    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true">-->
+<!--        &lt;!&ndash;-->
+<!--            通过set函数设置属性-->
+<!--            Class.forname("").newInstance()-->
+<!--            // 获取到所有属性-->
+<!--            // 找到属性的类型-->
+<!--            // 循环赋值-->
+<!--        &ndash;&gt;-->
+<!--        <property name="sid" value="1"></property>-->
+<!--        <property name="sname" value="abc"></property>-->
+<!--    </bean>-->
     <!--引入其他配置文件-->
 <!--    <import resource="applicationContext_controller.xml"></import>-->
 <!--    <import resource="applicationContext_dao.xml"></import>-->
 <!--    <import resource="applicationContext_service.xml"></import>-->
+
+    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true">
+        <!--
+            通过构造发方法对属性进行注入
+            Class.forname("").getConstructor(String.class ...).newInstance("1" ...)
+        -->
+        <constructor-arg name="sid" value="1" type="java.lang.Integer"></constructor-arg>
+        <constructor-arg name="sname">
+            <value>名字</value>
+        </constructor-arg>
+    </bean>
 
 </beans>
