@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd">
 
@@ -54,28 +55,28 @@
 <!--    <bean name="service" class="service.StudentService" autowire="byName"></bean>-->
 <!--    <bean name="controllerObj" class="controller.StudentController" autowire="byName"></bean>-->
 
-        <bean name="room" class="domain.Room">
-            <constructor-arg name="roomId" value="1" type="java.lang.Integer"></constructor-arg>
-            <constructor-arg name="rname" value="电竞房" type="java.lang.String"></constructor-arg>
-            <constructor-arg name="ids">
-                <array value-type="java.lang.String">
-                    <value>1</value>
-                    <value>2</value>
-                    <value>3</value>
-                    <value>4</value>
-                </array>
-            </constructor-arg>
-            <constructor-arg name="computers">
-                <array value-type="domain.Computer">
-                    <bean class="domain.Computer"></bean>
-                    <bean class="domain.Computer"></bean>
-                    <bean class="domain.Computer"></bean>
-                    <bean class="domain.Computer"></bean>
-                    <bean class="domain.Computer"></bean>
-                    <bean class="domain.Computer"></bean>
-                </array>
-            </constructor-arg>
-        </bean>
+<!--        <bean name="room" class="domain.Room">-->
+<!--            <constructor-arg name="roomId" value="1" type="java.lang.Integer"></constructor-arg>-->
+<!--            <constructor-arg name="rname" value="电竞房" type="java.lang.String"></constructor-arg>-->
+<!--            <constructor-arg name="ids">-->
+<!--                <array value-type="java.lang.String">-->
+<!--                    <value>1</value>-->
+<!--                    <value>2</value>-->
+<!--                    <value>3</value>-->
+<!--                    <value>4</value>-->
+<!--                </array>-->
+<!--            </constructor-arg>-->
+<!--            <constructor-arg name="computers">-->
+<!--                <array value-type="domain.Computer">-->
+<!--                    <bean class="domain.Computer"></bean>-->
+<!--                    <bean class="domain.Computer"></bean>-->
+<!--                    <bean class="domain.Computer"></bean>-->
+<!--                    <bean class="domain.Computer"></bean>-->
+<!--                    <bean class="domain.Computer"></bean>-->
+<!--                    <bean class="domain.Computer"></bean>-->
+<!--                </array>-->
+<!--            </constructor-arg>-->
+<!--        </bean>-->
 
 
     <bean name="testProperties" class="dao.PropertiesDao">
@@ -87,6 +88,17 @@
             </props>
         </constructor-arg>
     </bean>
+
+
+    <bean name="computer" class="domain.Computer" c:cid="1" c:cname="mac" c:cprice="15000"></bean>
+
+    <util:map id="map">
+        <entry key="1">
+            <bean class="domain.Computer"></bean>
+        </entry>
+    </util:map>
+
+    <bean name="room" class="domain.Room" c:roomId="1" c:rname="abc" c:ids="1,2,3,4" c:computers-ref="computer"></bean>
 
 
 

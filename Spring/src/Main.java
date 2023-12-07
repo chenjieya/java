@@ -56,16 +56,28 @@ public class Main {
 //            System.out.println(computer);
 //        }
 
-        PropertiesDao dao = (PropertiesDao)factory.getBean("testProperties");
+//        PropertiesDao dao = (PropertiesDao)factory.getBean("testProperties");
+//
+//        Properties properties = dao.getProperties();
+//
+//        Enumeration<?> enumeration = properties.propertyNames();
+//
+//        while (enumeration.hasMoreElements()) {
+//            String key = (String)enumeration.nextElement();
+//            String value = properties.getProperty(key);
+//            System.out.println(key + "=" + value);
+//        }
 
-        Properties properties = dao.getProperties();
+        Room room = (Room)factory.getBean("room");
 
-        Enumeration<?> enumeration = properties.propertyNames();
+        String[] ids = room.getIds();
+        for (String item : ids){
+            System.out.println(item);
+        }
 
-        while (enumeration.hasMoreElements()) {
-            String key = (String)enumeration.nextElement();
-            String value = properties.getProperty(key);
-            System.out.println(key + "=" + value);
+        Computer[] computers = room.getComputers();
+        for (Computer item : computers) {
+            System.out.println(item);
         }
 
 
