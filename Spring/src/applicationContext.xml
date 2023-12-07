@@ -31,4 +31,17 @@
         </constructor-arg>
     </bean>
 
+
+
+    <bean name="controller" class="controller.StudentController">
+        <property name="service">
+            <bean class="service.StudentService">
+                <property name="studentDao" ref="studentDaoClass"></property>
+            </bean>
+        </property>
+    </bean>
+
+    <bean name="studentDaoClass" class="dao.StudentDao"></bean>
+
+
 </beans>

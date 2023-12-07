@@ -1,3 +1,4 @@
+import controller.StudentController;
 import domain.Student;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -26,7 +27,12 @@ public class Main {
         // 写法四：在基础xml配置文件中，直接引入其他文件
 
         BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
-        Student stu = (Student)factory.getBean("student");
-        System.out.println(stu);
+//        Student stu = (Student)factory.getBean("student");
+//        System.out.println(stu);
+        StudentController controller = (StudentController) factory.getBean("controller");
+
+        System.out.println(controller);
+
+
     }
 }
