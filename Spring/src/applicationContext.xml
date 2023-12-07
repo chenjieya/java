@@ -50,9 +50,33 @@
 <!--    <bean name="controllerObj" class="controller.StudentController" autowire="constructor"></bean>-->
 
 
-    <bean name="studentDao" class="dao.StudentDao"></bean>
-    <bean name="service" class="service.StudentService" autowire="byName"></bean>
-    <bean name="controllerObj" class="controller.StudentController" autowire="byName"></bean>
+<!--    <bean name="studentDao" class="dao.StudentDao"></bean>-->
+<!--    <bean name="service" class="service.StudentService" autowire="byName"></bean>-->
+<!--    <bean name="controllerObj" class="controller.StudentController" autowire="byName"></bean>-->
+
+        <bean name="room" class="domain.Room">
+            <constructor-arg name="roomId" value="1" type="java.lang.Integer"></constructor-arg>
+            <constructor-arg name="rname" value="电竞房" type="java.lang.String"></constructor-arg>
+            <constructor-arg name="ids">
+                <array value-type="java.lang.String">
+                    <value>1</value>
+                    <value>2</value>
+                    <value>3</value>
+                    <value>4</value>
+                </array>
+            </constructor-arg>
+            <constructor-arg name="computers">
+                <array value-type="domain.Computer">
+                    <bean class="domain.Computer"></bean>
+                    <bean class="domain.Computer"></bean>
+                    <bean class="domain.Computer"></bean>
+                    <bean class="domain.Computer"></bean>
+                    <bean class="domain.Computer"></bean>
+                    <bean class="domain.Computer"></bean>
+                </array>
+            </constructor-arg>
+        </bean>
+
 
 
 

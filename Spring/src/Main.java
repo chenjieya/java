@@ -1,5 +1,5 @@
-import controller.StudentController;
-import domain.Student;
+import domain.Computer;
+import domain.Room;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -29,9 +29,30 @@ public class Main {
         BeanFactory factory = new ClassPathXmlApplicationContext("applicationContext.xml");
 //        Student stu = (Student)factory.getBean("student");
 //        System.out.println(stu);
-        StudentController controllers = (StudentController) factory.getBean("controllerObj");
+//        StudentController controllers = (StudentController) factory.getBean("controllerObj");
+//
+//        System.out.println(controllers);
 
-        System.out.println(controllers);
+
+        Room room = (Room)factory.getBean("room");
+
+        Integer roomId = room.getRoomId();
+        String rname = room.getRname();
+        String[] ids = room.getIds();
+        Computer[] computers = room.getComputers();
+        System.out.println(roomId);
+        System.out.println("====================================");
+        System.out.println(rname);
+        System.out.println("====================================");
+        for (String item : ids) {
+            System.out.println(item);
+        }
+        System.out.println("====================================");
+        for (Computer computer : computers) {
+            System.out.println(computer);
+        }
+
+
 
 
     }
