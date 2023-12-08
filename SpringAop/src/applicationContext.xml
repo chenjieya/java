@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
+       xmlns:util="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd"
+>
+
+    <bean id="testController" class="controller.TestController"></bean>
+    <bean id="aspect1" class="acspect.Ascpect1"></bean>
+    <bean id="ascpect2" class="acspect.Ascpect2"></bean>
+
+
+    <!--给切面对象一个说明-->
+    <aop:config>
+        <!--说明切点 包 类 方法-->
+        <aop:pointcut id="mycut" expression="execution(* controller.TestController.test())"/>
+        <!--说明哪一些对象是切面对象-->
+        <aop:aspect id="asc1" ref="aspect1">
+            <!--连接点的执行  连接点是切面中的方法-->
+            <aop:before method="beforeMethod" pointcut-ref="mycut"></aop:before>
+            <aop:after-returning method="afterReturnMethod" pointcut-ref="mycut"></aop:after-returning>
+            <aop:after-throwing method="throwException" pointcut-ref="mycut"></aop:after-throwing>
+            <aop:after method="afterMethod" pointcut-ref="mycut"></aop:after>
+            <aop:around method="aroundMethod" pointcut-ref="mycut"></aop:around>
+        </aop:aspect>
+
+        <aop:aspect id="asc2" ref="ascpect2">
+
+            <!--连接点的执行  连接点是切面中的方法-->
+            <aop:before method="beforeMethod" pointcut-ref="mycut"></aop:before>
+            <aop:after-returning method="afterReturnMethod" pointcut-ref="mycut"></aop:after-returning>
+        </aop:aspect>
+    </aop:config>
+
+</beans>
