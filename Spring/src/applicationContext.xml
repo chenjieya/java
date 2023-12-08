@@ -2,8 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:c="http://www.springframework.org/schema/c"
        xmlns:util="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"
+       default-autowire="constructor"
+       default-lazy-init="true"
+>
 
 <!--    <bean name="student" class="domain.Student" scope="singleton" lazy-init="true">-->
 <!--        &lt;!&ndash;-->
@@ -79,28 +83,45 @@
 <!--        </bean>-->
 
 
-    <bean name="testProperties" class="dao.PropertiesDao">
-        <constructor-arg name="properties">
-            <props>
-                <prop key="1">aaa</prop>
-                <prop key="2">bbb</prop>
-                <prop key="3">ccc</prop>
-            </props>
-        </constructor-arg>
+<!--    <bean name="testProperties" class="dao.PropertiesDao">-->
+<!--        <constructor-arg name="properties">-->
+<!--            <props>-->
+<!--                <prop key="1">aaa</prop>-->
+<!--                <prop key="2">bbb</prop>-->
+<!--                <prop key="3">ccc</prop>-->
+<!--            </props>-->
+<!--        </constructor-arg>-->
+<!--    </bean>-->
+
+
+<!--    <bean name="computer" class="domain.Computer" c:cid="1" c:cname="mac" c:cprice="15000"></bean>-->
+
+<!--    <util:map id="map">-->
+<!--        <entry key="1">-->
+<!--            <bean class="domain.Computer"></bean>-->
+<!--        </entry>-->
+<!--    </util:map>-->
+
+<!--    <bean name="room" class="domain.Room" c:roomId="1" c:rname="abc" c:ids="1,2,3,4" c:computers-ref="computer"></bean>-->
+
+
+
+<!--    <bean id="c1" class="domain.Computer"></bean>-->
+<!--    <bean id="c2" class="domain.Computer"></bean>-->
+<!--    <bean id="c3" class="domain.Computer"></bean>-->
+<!--    &lt;!&ndash;模板&ndash;&gt;-->
+<!--    <bean id="templates" c:computer1-ref="c1" c:computer2-ref="c2" c:computer3-ref="c3" abstract="true"></bean>-->
+<!--    &lt;!&ndash;使用模板&ndash;&gt;-->
+<!--    <bean id="roomTemplate" class="domain.RoomTemplate" parent="templates"></bean>-->
+<!--    <bean id="person" class="domain.Person" parent="templates"></bean>-->
+
+
+    <!--引入外部的文件-->
+    <context:property-placeholder location="classpath:test.properties"></context:property-placeholder>
+
+    <bean id="computer" class="domain.Computer">
+        <property name="cid" value="${id}"></property>
+        <property name="cname" value="${name}"></property>
+        <property name="cprice" value="${price}"></property>
     </bean>
-
-
-    <bean name="computer" class="domain.Computer" c:cid="1" c:cname="mac" c:cprice="15000"></bean>
-
-    <util:map id="map">
-        <entry key="1">
-            <bean class="domain.Computer"></bean>
-        </entry>
-    </util:map>
-
-    <bean name="room" class="domain.Room" c:roomId="1" c:rname="abc" c:ids="1,2,3,4" c:computers-ref="computer"></bean>
-
-
-
-
 </beans>

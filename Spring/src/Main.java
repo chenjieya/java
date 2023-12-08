@@ -1,6 +1,8 @@
 import dao.PropertiesDao;
 import domain.Computer;
+import domain.Person;
 import domain.Room;
+import domain.RoomTemplate;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -68,18 +70,24 @@ public class Main {
 //            System.out.println(key + "=" + value);
 //        }
 
-        Room room = (Room)factory.getBean("room");
+//        Room room = (Room)factory.getBean("room");
+//
+//        String[] ids = room.getIds();
+//        for (String item : ids){
+//            System.out.println(item);
+//        }
+//
+//        Computer[] computers = room.getComputers();
+//        for (Computer item : computers) {
+//            System.out.println(item);
+//        }
 
-        String[] ids = room.getIds();
-        for (String item : ids){
-            System.out.println(item);
-        }
+//        RoomTemplate room = (RoomTemplate)factory.getBean("roomTemplate");
+//        System.out.println(room);
+//        Person persons = (Person) factory.getBean("person");
+//        System.out.println(persons);
 
-        Computer[] computers = room.getComputers();
-        for (Computer item : computers) {
-            System.out.println(item);
-        }
-
-
+        Computer c = (Computer) factory.getBean("computer");
+        System.out.println(c);
     }
 }
