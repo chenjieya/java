@@ -11,8 +11,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class TestController {
 
     // 请求执行方法
+    @RequestMapping(params = "method=testTwo")
+    public void testTwo() {
+        System.out.println("TestTwo");
+    }
     @RequestMapping
-    public void test() {
-        System.out.println("Controller 控制层开始执行了");
+    public void testOne() {
+        System.out.println("TestOne");
     }
 }
