@@ -1,17 +1,18 @@
 package controller;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
+// 将类交给Spring，但是要让Spring的配置文件，扫描到该注解
+@Controller
+// 请求路径
+@RequestMapping("testController.do")
+public class TestController {
 
-public class TestController implements Controller {
-
-    @Override
-    public ModelAndView handleRequest(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws Exception {
+    // 请求执行方法
+    @RequestMapping
+    public void test() {
         System.out.println("Controller 控制层开始执行了");
-        return null;
     }
 }
