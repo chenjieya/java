@@ -12,5 +12,6 @@
   </head>
   <body>
   <a href="testController.do">测试一下</a>
+  <a href="test.do?uname=cj&age=19">测试一下</a>
   </body>
 </html>
