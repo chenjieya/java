@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+
+    <bean id="testController" class="controller.TestController"></bean>
+
+    <!--配置请求和真实对应的资源-->
+    <!--DispatcherServlet类有一个自己的小弟，负责处理映射关系 SimpleUrlHandlerMapping-->
+    <bean id="simpleUrlHandlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <!--真实的请求和类的对应关系-->
+                <prop key="testController.do">testController</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>
