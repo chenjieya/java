@@ -25,4 +25,16 @@
     <context:component-scan base-package="controller"/>
     <!--开启请求响应注解的处理（加载HandlerMapping类）-->
     <mvc:annotation-driven/>
+
+    <!--加载一个自定义类转换器-->
+    <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="utils.FormatDate"/>
+            </set>
+        </property>
+    </bean>
+    <!--手配配置这个类的加载驱动-->
+    <mvc:annotation-driven conversion-service="conversionService"></mvc:annotation-driven>
+
 </beans>

@@ -1,5 +1,6 @@
 package domain;
 
+import java.util.Date;
 import java.util.List;
 
 public class User {
@@ -7,19 +8,12 @@ public class User {
     private String username;
     private Integer age;
     private String sex;
+    private Date birthday;
+
 
     private List<Wallet> wallet;
 
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", age=" + age +
-                ", sex='" + sex + '\'' +
-                ", wallet=" + wallet +
-                '}';
-    }
 
     public List<Wallet> getWallet() {
         return wallet;
@@ -29,10 +23,30 @@ public class User {
         this.wallet = wallet;
     }
 
-    public User(String username, Integer age, String sex, List<Wallet> wallet) {
+    @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", age=" + age +
+                ", sex='" + sex + '\'' +
+                ", birthday=" + birthday +
+                ", wallet=" + wallet +
+                '}';
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public User(String username, Integer age, String sex, Date birthday, List<Wallet> wallet) {
         this.username = username;
         this.age = age;
         this.sex = sex;
+        this.birthday = birthday;
         this.wallet = wallet;
     }
 

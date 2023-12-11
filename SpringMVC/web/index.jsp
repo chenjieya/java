@@ -35,6 +35,7 @@
   user: <input name="username"> <br>
   sex: <input name="sex"> <br>
   age: <input name="age"> <br>
+  birthday: <input name="birthday"> <br>
 
   <input type="submit" value="submit">
 </form>

@@ -58,15 +58,23 @@ public class TestController {
 
 //    }
 
+//    @RequestMapping("testParams.do")
+//    public String handleParams(HttpServletRequest request){
+//
+//
+//        String username = request.getParameter("username");
+//        String sex = request.getParameter("sex");
+//        String age = request.getParameter("age");
+//
+//        System.out.println("====="+username+"====="+age+"====="+sex+"=====");  // =====alvis=====23=====male=====
+//
+//        return "welecome.jsp";
+//    }
+
     @RequestMapping("testParams.do")
-    public String handleParams(HttpServletRequest request){
+    public String handleParams(User user) {
 
-
-        String username = request.getParameter("username");
-        String sex = request.getParameter("sex");
-        String age = request.getParameter("age");
-
-        System.out.println("====="+username+"====="+age+"====="+sex+"=====");  // =====alvis=====23=====male=====
+        System.out.println(user);
 
         return "welecome.jsp";
     }
