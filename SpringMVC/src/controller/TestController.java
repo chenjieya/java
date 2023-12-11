@@ -3,9 +3,7 @@ package controller;
 
 import domain.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
@@ -72,10 +70,11 @@ public class TestController {
 //    }
 
     @RequestMapping("testParams.do")
-    public String handleParams(User user) {
+    public String handleParams(User user, @CookieValue("JSESSIONID") String cookievalue, @RequestHeader("Accept-Language") String header) {
 
         System.out.println(user);
-
+        System.out.println("接收到的cookie是："+cookievalue);
+        System.out.println("接收到的header是："+header);
         return "welecome.jsp";
     }
 
