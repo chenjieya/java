@@ -60,6 +60,8 @@ public class TestController {
 
     @RequestMapping("testParams.do")
     public String handleParams(HttpServletRequest request){
+
+
         String username = request.getParameter("username");
         String sex = request.getParameter("sex");
         String age = request.getParameter("age");
