@@ -71,14 +71,7 @@ public class TestController {
 //    }
 
 //    @RequestMapping("testParams.do")
-//    public String handleParams(User user, @CookieValue("JSESSIONID") String cookievalue, @RequestHeader("Accept-Language") String header) {
-//
-//        System.out.println(user);
-//        System.out.println("接收到的cookie是："+cookievalue);
-//        System.out.println("接收到的header是："+header);
-//        return "welecome.jsp";
-//    }
-
+//    public String handleParams(User user, q
     @ResponseBody
     @RequestMapping("testAjax.do")
     public Student handleParams(@RequestBody Student student) {
