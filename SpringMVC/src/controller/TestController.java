@@ -1,6 +1,7 @@
 package controller;
 
 
+import domain.Student;
 import domain.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -69,13 +70,26 @@ public class TestController {
 //        return "welecome.jsp";
 //    }
 
-    @RequestMapping("testParams.do")
-    public String handleParams(User user, @CookieValue("JSESSIONID") String cookievalue, @RequestHeader("Accept-Language") String header) {
+//    @RequestMapping("testParams.do")
+//    public String handleParams(User user, @CookieValue("JSESSIONID") String cookievalue, @RequestHeader("Accept-Language") String header) {
+//
+//        System.out.println(user);
+//        System.out.println("接收到的cookie是："+cookievalue);
+//        System.out.println("接收到的header是："+header);
+//        return "welecome.jsp";
+//    }
 
-        System.out.println(user);
-        System.out.println("接收到的cookie是："+cookievalue);
-        System.out.println("接收到的header是："+header);
-        return "welecome.jsp";
+    @ResponseBody
+    @RequestMapping("testAjax.do")
+    public Student handleParams(@RequestBody Student student) {
+        System.out.println("testAjax");
+        System.out.println(student);
+//        Student result = new Student(1, "alvis", "男");
+        Student result = new Student(student.getSid(),student.getSname(),student.getSsex());
+
+        return result;
     }
+
+
 
 }
