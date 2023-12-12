@@ -9,13 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a1b70065-c67a-4222-8526-a280b9c0c398" name="Changes" comment="feat(Springmvc-ModelAdnView): ModelAdnView\addribute\session">
-      <change afterPath="$PROJECT_DIR$/src/exception/ExcetionResolver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/exception/MyException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/web/error.jsp" afterDir="false" />
+    <list default="true" id="a1b70065-c67a-4222-8526-a280b9c0c398" name="Changes" comment="feat(Springmvc-异常处理):异常处理">
+      <change afterPath="$PROJECT_DIR$/src/controller/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/interceptor/MyInterceptor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/applicationContext.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/applicationContext.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/UserController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +24,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -171,7 +169,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1702372468215</updated>
-      <workItem from="1702372469219" duration="3984000" />
+      <workItem from="1702372469219" duration="5178000" />
     </task>
     <task id="LOCAL-00001" summary="feat(Springmvc-ModelAdnView): ModelAdnView\addribute\session">
       <option name="closed" value="true" />
@@ -181,7 +179,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702374421903</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat(Springmvc-异常处理):异常处理">
+      <option name="closed" value="true" />
+      <created>1702378118991</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1702378118991</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -189,6 +195,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat(Springmvc-ModelAdnView): ModelAdnView\addribute\session" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(Springmvc-ModelAdnView): ModelAdnView\addribute\session" />
+    <MESSAGE value="feat(Springmvc-异常处理):异常处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(Springmvc-异常处理):异常处理" />
   </component>
 </project>

@@ -16,5 +16,7 @@
 
   <hr>
   <a href="excetion.do">异常测试</a>
+
+  <a href="interceptor.do">拦截器测试</a>
   </body>
 </html>
