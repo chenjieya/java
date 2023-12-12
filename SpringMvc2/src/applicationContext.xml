@@ -7,7 +7,7 @@
         https://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd"
 >
     <!--注解-->
-    <context:component-scan base-package="controller,service"/>
+    <context:component-scan base-package="controller,service,exception"/>
     <!--开启请求响应注解的处理（加载HandlerMapping类）-->
     <mvc:annotation-driven/>
 

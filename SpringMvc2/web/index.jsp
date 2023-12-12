@@ -12,5 +12,9 @@
 
       <input value="submit" type="submit">
     </form>
+
+
+  <hr>
+  <a href="excetion.do">异常测试</a>
   </body>
 </html>
