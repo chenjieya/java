@@ -11,4 +11,12 @@
     <!--开启请求响应注解的处理（加载HandlerMapping类）-->
     <mvc:annotation-driven/>
 
+
+    <!--配置文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--缓存-->
+        <property name="maxUploadSize" value="10485760"/>
+    </bean>
+
+
 </beans>
