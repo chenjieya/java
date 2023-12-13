@@ -18,5 +18,9 @@
     <input type="submit" value="submit">
   </form>
 
+
+  <hr>
+  <a href="download.do?filename=猎魔人.The.Witcher.S03.1080p.HD中英双字_2.torrent">文件下载</a>
+
   </body>
 </html>

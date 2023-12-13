@@ -8,8 +8,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.List;
 
 @Controller
@@ -60,5 +66,36 @@ public class TestController {
         System.out.println("上传成功");
         return "welecome.jsp";
     }
+
+
+
+    // 原生的方式下载文件
+    @RequestMapping("download.do")
+    public void download(HttpServletRequest request, HttpServletResponse response) throws Exception {
+
+        // 读取请求过来的文件名
+        String filename = request.getParameter("filename");
+        // 创建文件输入流读取文件
+        FileInputStream fileInputStream = new FileInputStream("G:\\java\\" + filename);
+        // 处理一下文件名，如果服务端存储的文件名称有中文的话，需要处理一下
+        // 为了浏览器下载展示的文件名是完整的，所以要处理一下
+        filename = URLEncoder.encode(filename, "UTF-8");
+        // 响应头信息
+        response.setContentType("application/x-msdownload");
+        response.setHeader("Content-Disposition", "attachment;filename=" + filename);
+
+        // 正式开始写数据（输入流）
+        ServletOutputStream outputStream = response.getOutputStream();
+
+        byte[] bytes = new byte[1024];
+        int len = fileInputStream.read(bytes); // 读取有效字节个数
+        while (len != -1) {
+            outputStream.write(bytes, 0, len);
+            outputStream.flush();
+            len = fileInputStream.read(bytes);
+        }
+
+    }
+
 
 }
