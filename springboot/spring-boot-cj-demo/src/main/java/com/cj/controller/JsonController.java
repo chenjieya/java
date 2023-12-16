@@ -5,6 +5,7 @@ import com.cj.bean.Food;
 import com.cj.bean.VegeTables;
 import com.cj.config.FoodConfig;
 import com.cj.config.VegetableConfig;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -45,6 +46,8 @@ public class JsonController {
         return food;
     }
 
+
+    // 蔬菜配置文件
     @Autowired
     private VegetableConfig vegetableConfig;
 
@@ -55,6 +58,22 @@ public class JsonController {
         vegeTables.setTomato(vegetableConfig.getTomato());
         vegeTables.setCarrot(vegetableConfig.getCarrot());
         return vegeTables;
+    }
+
+    // jasypt加密
+    @Value("${userinfo.username}")
+    private String username;
+    @Value("${userinfo.password}")
+    private String password;
+    @RequestMapping("/jasypt")
+
+    public String jasypt() {
+        StringBuffer str = new StringBuffer();
+        str.append(username);
+        str.append("\n");
+        str.append(password);
+
+        return str.toString();
     }
 
 }

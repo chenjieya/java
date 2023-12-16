@@ -1,5 +1,17 @@
 #server:
 #  port: 8080
+jasypt:
+  encryptor:
+    password: 123456!@#
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+userinfo:
+  username: ENC(dQjA0bmo8685YI5OZVGzsQ==)
+  password: ENC(5iHrt5u2ZOkO1G2LFSfB0w==)
+#  username: 123456
+#  password: 123456
+
 
 food:
   meat: 烤肉
