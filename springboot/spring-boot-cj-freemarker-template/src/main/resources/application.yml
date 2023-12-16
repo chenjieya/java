@@ -1,0 +1,9 @@
+server:
+  port: 8080
+
+spring:
+  freemarker:
+      # 文件位置，不可以改变
+      # prefix: classpath:/templates/
+      # 文件后缀
+      suffix: .ftl

@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/spring-boot-cj-demo/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cj-freemarker-template/pom.xml" />
       </list>
     </option>
   </component>
