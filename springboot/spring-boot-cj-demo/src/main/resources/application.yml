@@ -9,7 +9,7 @@ food:
     - 咖啡
     - 奶茶
 
-# 指定环境
+# 指定当前环境
 spring:
   profiles:
     active: "production"
