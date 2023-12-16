@@ -1,5 +1,6 @@
 package com.cj.config;
 
+import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 /**
@@ -10,24 +11,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
  * prefix前缀指向配置文件中的一级目录
  */
 @ConfigurationProperties(prefix = "food")
+@Data
 public class FoodConfig {
 
     private String rice;
     private String meat;
+    private String[] drink;
 
-    public String getRice() {
-        return rice;
-    }
-
-    public void setRice(String rice) {
-        this.rice = rice;
-    }
-
-    public String getMeat() {
-        return meat;
-    }
-
-    public void setMeat(String meat) {
-        this.meat = meat;
-    }
 }

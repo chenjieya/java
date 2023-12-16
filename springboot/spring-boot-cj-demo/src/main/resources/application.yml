@@ -1,0 +1,35 @@
+#server:
+#  port: 8080
+
+food:
+  meat: 烤肉
+  rice: 米饭
+  drink:
+    - 矿泉水
+    - 咖啡
+    - 奶茶
+
+# 指定环境
+spring:
+  profiles:
+    active: "production"
+
+---
+# 开发环境
+spring:
+  config:
+    activate:
+      on-profile: "development"
+
+server:
+  port: 8081
+
+---
+# 生产环境
+spring:
+  config:
+    activate:
+      on-profile: "production"
+
+server:
+  port: 8082

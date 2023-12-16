@@ -39,8 +39,9 @@ public class JsonController {
     @RequestMapping("/json")
     public Food json() {
         Food food = new Food();
-        food.setMeat(meat);
-        food.setRice(rice);
+        food.setMeat(foodConfig.getMeat());
+        food.setRice(foodConfig.getRice());
+        food.setDrink(foodConfig.getDrink());
         return food;
     }
 
