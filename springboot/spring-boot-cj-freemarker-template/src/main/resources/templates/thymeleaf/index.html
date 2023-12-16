@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--变量表达式-->
+    <p th:text="${name}">name</p>
+    <!--变量表达式接受对象-->
+    <p th:text="${user.name}">user name</p>
+    <p th:text="${user.age}">user age</p>
+    <!--选择变量表达式-->
+    <div th:object="${user}">
+        <!--选择变量表达式-获取对象的属性-->
+        <p th:text="*{name}">name</p>
+        <p th:text="*{age}">age</p>
+    </div>
+    <!--链接表达式-->
+    <a th:href="@{/welcome}" href="/welcome">welcome</a>
+
+    <!--片段表达式-->
+<!--    <div th:insert="~{fotter :: copy}"></div>-->
+<!--    <div th:replace="~{fotter :: copy}"></div>-->
+<!--    <div th:include="~{fotter :: copy}"></div>-->
+</body>
+</html>

@@ -17,6 +17,6 @@ public class FtlController {
     @RequestMapping("/ftl")
     public String index(Model model){
         model.addAttribute("now", new Date().toString());
-        return "index";
+        return "/freemarker/index";
     }
 }
