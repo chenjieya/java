@@ -1,6 +1,5 @@
 package com.cj.service;
 
-import com.cj.dao.GuestDao;
 import com.cj.domain.Guest;
 import com.cj.respository.GuestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
