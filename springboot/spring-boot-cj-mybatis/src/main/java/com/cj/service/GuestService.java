@@ -39,4 +39,10 @@ public class GuestService {
         return mapper2.getList();
     }
 
+    public void save(Guest guest) {
+        mapper2.add(guest);
+    }
+
+
+
 }
