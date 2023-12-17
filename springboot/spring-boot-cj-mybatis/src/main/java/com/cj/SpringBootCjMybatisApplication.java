@@ -6,7 +6,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
 //@MapperScan("com.cj.dao")
-@MapperScan(basePackages = "com.cj.tk.mybatis")
+//@MapperScan(basePackages = "com.cj.tk.mybatis")
 public class SpringBootCjMybatisApplication {
 
     public static void main(String[] args) {

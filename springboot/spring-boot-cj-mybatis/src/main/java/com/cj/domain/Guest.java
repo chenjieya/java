@@ -11,7 +11,6 @@ import java.io.Serializable;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-// tk注解
 @Table(name= "restaurant")
 public class Guest implements Serializable {
 

@@ -5,9 +5,17 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/springboot
-    username: root
-    password: chenjie+00
+    db1:
+      jdbc-url: jdbc:mysql://localhost:3306/springboot
+      username: root
+      password: chenjie+00
+    db2:
+      jdbc-url: jdbc:mysql://localhost:3306/test
+      username: root
+      password: chenjie+00
+
+
+
     # \u9ED8\u8BA4\u8BC6\u522B
 #    driver-class-name: com.mysql.cj.jdbc.Driver
 
