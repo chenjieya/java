@@ -12,6 +12,7 @@
         <module name="spring-boot-cj-demo" />
         <module name="spring-boot-cj-thymeleaf-demo" />
         <module name="spring-boot-cj-restful" />
+        <module name="spring-boot-cj-mybatis" />
       </profile>
     </annotationProcessing>
   </component>
@@ -20,6 +21,7 @@
       <module name="spring-boot-cj-demo" options="-parameters" />
       <module name="spring-boot-cj-freemarker-template" options="-parameters" />
       <module name="spring-boot-cj-jpa" options="-parameters" />
+      <module name="spring-boot-cj-mybatis" options="-parameters" />
       <module name="spring-boot-cj-restful" options="-parameters" />
       <module name="spring-boot-cj-thymeleaf-demo" options="-parameters" />
     </option>
