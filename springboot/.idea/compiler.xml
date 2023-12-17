@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="spring-boot-cj-freemarker-template" />
+        <module name="spring-boot-cj-jpa" />
         <module name="spring-boot-cj-demo" />
         <module name="spring-boot-cj-thymeleaf-demo" />
         <module name="spring-boot-cj-restful" />
@@ -18,6 +19,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-boot-cj-demo" options="-parameters" />
       <module name="spring-boot-cj-freemarker-template" options="-parameters" />
+      <module name="spring-boot-cj-jpa" options="-parameters" />
       <module name="spring-boot-cj-restful" options="-parameters" />
       <module name="spring-boot-cj-thymeleaf-demo" options="-parameters" />
     </option>
