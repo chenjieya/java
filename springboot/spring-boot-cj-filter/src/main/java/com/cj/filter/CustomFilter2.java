@@ -1,24 +1,26 @@
 package com.cj.filter;
 
 import jakarta.servlet.*;
+import jakarta.servlet.annotation.WebFilter;
 
 import java.io.IOException;
 
-public class CustomFilter implements Filter {
+@WebFilter(filterName = "customFilter2",urlPatterns = {"/*"})
+public class CustomFilter2 implements Filter {
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
-        System.out.println("-----------filterinit-------------");
+        System.out.println("-----------filter2init-------------");
     }
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        System.out.println("-----------filterdo-------------");
+        System.out.println("-----------filter2do-------------");
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
     public void destroy() {
-        System.out.println("-----------filterdestroy-------------");
+        System.out.println("-----------filter2destroy-------------");
     }
 }
