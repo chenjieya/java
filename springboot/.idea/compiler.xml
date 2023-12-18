@@ -9,6 +9,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="spring-boot-cj-demo" />
         <module name="spring-boot-cj-thymeleaf-demo" />
+        <module name="spring-boot-cj-error-exception" />
         <module name="spring-boot-cj-mybatis" />
         <module name="spring-boot-cj-web-container" />
         <module name="spring-boot-cj-filter" />
@@ -23,6 +24,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-boot-cj-demo" options="-parameters" />
+      <module name="spring-boot-cj-error-exception" options="-parameters" />
       <module name="spring-boot-cj-event-listener" options="-parameters" />
       <module name="spring-boot-cj-filter" options="-parameters" />
       <module name="spring-boot-cj-freemarker-template" options="-parameters" />
