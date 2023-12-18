@@ -7,3 +7,4 @@ spring:
       # prefix: classpath:/templates/
       # 文件后缀
       suffix: .ftl
+debug: true

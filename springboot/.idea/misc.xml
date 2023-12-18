@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/spring-boot-cj-jpa/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cj-mybatis/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cj-mybatispluse/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cj-event-listener/pom.xml" />
       </list>
     </option>
   </component>
