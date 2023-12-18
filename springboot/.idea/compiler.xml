@@ -11,6 +11,7 @@
         <module name="spring-boot-cj-thymeleaf-demo" />
         <module name="spring-boot-cj-mybatis" />
         <module name="spring-boot-cj-web-container" />
+        <module name="spring-boot-cj-filter" />
         <module name="spring-boot-cj-freemarker-template" />
         <module name="spring-boot-cj-jpa" />
         <module name="spring-boot-cj-event-listener" />
@@ -23,6 +24,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="spring-boot-cj-demo" options="-parameters" />
       <module name="spring-boot-cj-event-listener" options="-parameters" />
+      <module name="spring-boot-cj-filter" options="-parameters" />
       <module name="spring-boot-cj-freemarker-template" options="-parameters" />
       <module name="spring-boot-cj-jpa" options="-parameters" />
       <module name="spring-boot-cj-mybatis" options="-parameters" />
