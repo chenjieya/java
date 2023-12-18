@@ -10,6 +10,7 @@
         <module name="spring-boot-cj-demo" />
         <module name="spring-boot-cj-thymeleaf-demo" />
         <module name="spring-boot-cj-mybatis" />
+        <module name="spring-boot-cj-web-container" />
         <module name="spring-boot-cj-freemarker-template" />
         <module name="spring-boot-cj-jpa" />
         <module name="spring-boot-cj-event-listener" />
@@ -28,6 +29,7 @@
       <module name="spring-boot-cj-mybatispluse" options="-parameters" />
       <module name="spring-boot-cj-restful" options="-parameters" />
       <module name="spring-boot-cj-thymeleaf-demo" options="-parameters" />
+      <module name="spring-boot-cj-web-container" options="-parameters" />
     </option>
   </component>
 </project>
