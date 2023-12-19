@@ -4,6 +4,7 @@ import com.cj.bean.Guest;
 import jakarta.validation.Valid;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,12 @@ public class GuestController {
             }
         }
         return sringbuffer.toString();
+    }
+
+    @GetMapping("/testerror")
+    public String testerror() {
+        new Error("错误");
+        return "测试error";
     }
 
 
