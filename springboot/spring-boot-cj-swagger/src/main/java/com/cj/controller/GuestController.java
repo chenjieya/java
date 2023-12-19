@@ -4,6 +4,8 @@ import com.cj.domain.Guest;
 import io.swagger.v3.oas.annotations.Hidden;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +25,18 @@ public class GuestController {
 
 
     // 添加信息
-    @Operation(summary= "添加一个嘉宾")
+    @Operation(summary= "添加一个嘉宾", requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
+            description = "嘉宾信息",
+            required = true,
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = Guest.class)
+                    )
+            }
+    ))
     @PostMapping
-    public String add(Guest guest) {
+    public String add(@RequestBody Guest guest) {
         return "redirect:/guest";
     }
 
