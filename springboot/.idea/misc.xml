@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/spring-boot-cj-web-container/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cj-filter/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cj-error-exception/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cj-logging/pom.xml" />
       </list>
     </option>
   </component>

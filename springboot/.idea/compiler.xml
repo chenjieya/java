@@ -10,6 +10,7 @@
         <module name="spring-boot-cj-demo" />
         <module name="spring-boot-cj-thymeleaf-demo" />
         <module name="spring-boot-cj-error-exception" />
+        <module name="spring-boot-cj-logging" />
         <module name="spring-boot-cj-mybatis" />
         <module name="spring-boot-cj-web-container" />
         <module name="spring-boot-cj-filter" />
@@ -29,6 +30,7 @@
       <module name="spring-boot-cj-filter" options="-parameters" />
       <module name="spring-boot-cj-freemarker-template" options="-parameters" />
       <module name="spring-boot-cj-jpa" options="-parameters" />
+      <module name="spring-boot-cj-logging" options="-parameters" />
       <module name="spring-boot-cj-mybatis" options="-parameters" />
       <module name="spring-boot-cj-mybatispluse" options="-parameters" />
       <module name="spring-boot-cj-restful" options="-parameters" />
