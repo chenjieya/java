@@ -27,4 +27,10 @@ public class GuestController {
         return guestService.selectOne(id);
     }
 
+    @GetMapping("/update/{id}")
+    public String  updateGuest(@PathVariable Integer id, String name, String role) {
+        guestService.updateGuest(new Guest(id, name, role));
+        return "Success";
+    }
+
 }
