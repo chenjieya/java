@@ -17,6 +17,7 @@
         <option value="$PROJECT_DIR$/spring-boot-cj-error-exception/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cj-logging/pom.xml" />
         <option value="$PROJECT_DIR$/spring-boot-cj-swagger/pom.xml" />
+        <option value="$PROJECT_DIR$/spring-boot-cj-actuator/pom.xml" />
       </list>
     </option>
   </component>
