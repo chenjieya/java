@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<c3p0-config>
+    <!--默认配置标签-->
+<!--    <default-config>-->
+    <name-config name="myc3p0">
+        <property name="driverClass">com.mysql.cj.jdbc.Driver</property>
+        <property name="jdbcUrl">jdbc:mysql://localhost:3306/schoole</property>
+        <property name="user">root</property>
+        <property name="password">chenjie+00</property>
+        <!--初始连接池的连接数量-->
+        <property name="initialPoolSize">10</property>
+        <!--最大可创建连接数量-->
+        <property name="maxPoolSize">10</property>
+        <!--最小连接数量-->
+        <property name="minPoolSize">2</property>
+        <!--当没有空闲连接的时候，一次性创建的新连接数量-->
+        <property name="acquireIncrement">2</property>
+        <!--连接的最大空闲时间，如果一直未使用，则断掉此链接 如果配置为0.则永远不会断掉-->
+        <property name="maxIdleTime">0</property>
+    </name-config>
+    <!--    </default-config>-->
+</c3p0-config>
