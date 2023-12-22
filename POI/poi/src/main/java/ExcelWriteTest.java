@@ -5,12 +5,14 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
 
 
 import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class ExcelWriteTest {
 
@@ -102,5 +104,90 @@ public class ExcelWriteTest {
         System.out.println("文件写入成功");
 
     }
+
+
+    @Test
+    public void writeExcelBigData03() throws Exception {
+        long begin = System.currentTimeMillis();
+        Workbook workbook = new HSSFWorkbook();
+
+        Sheet sheet1 = workbook.createSheet("sheet1");
+
+        for (int rowNum = 0; rowNum < 65536; rowNum++) {
+            Row row = sheet1.createRow(rowNum);
+            for (int cellNum = 0; cellNum < 10; cellNum++) {
+                Cell cell = row.createCell(cellNum);
+                cell.setCellValue(cellNum);
+            }
+        }
+        System.out.println("over");
+
+        FileOutputStream fileOutputStream = new FileOutputStream("/Users/chenjie/Desktop/home/java/POI/poi/陈杰万岁bigData03.xls");
+        workbook.write(fileOutputStream);
+        fileOutputStream.close();
+        workbook.close();
+        long end = System.currentTimeMillis();
+
+        System.out.println((double) (end-begin) /1000);   // 1.084s
+
+    }
+
+    @Test
+    public void writeExcelBigData07() throws Exception {
+        long begin = System.currentTimeMillis();
+        Workbook workbook = new XSSFWorkbook();
+
+        Sheet sheet1 = workbook.createSheet("sheet1");
+
+        for (int rowNum = 0; rowNum < 65536; rowNum++) {
+            Row row = sheet1.createRow(rowNum);
+            for (int cellNum = 0; cellNum < 10; cellNum++) {
+                Cell cell = row.createCell(cellNum);
+                cell.setCellValue(cellNum);
+            }
+        }
+        System.out.println("over");
+
+        FileOutputStream fileOutputStream = new FileOutputStream("/Users/chenjie/Desktop/home/java/POI/poi/陈杰万岁bigData07.xlsx");
+        workbook.write(fileOutputStream);
+        fileOutputStream.close();
+        workbook.close();
+        long end = System.currentTimeMillis();
+
+        System.out.println((double) (end-begin) /1000);   // 5.748s
+
+    }
+
+
+    @Test
+    public void writeExcelBigData07pluse() throws Exception {
+        long begin = System.currentTimeMillis();
+        Workbook workbook = new SXSSFWorkbook();
+
+        Sheet sheet1 = workbook.createSheet("sheet1");
+
+        for (int rowNum = 0; rowNum < 65536; rowNum++) {
+            Row row = sheet1.createRow(rowNum);
+            for (int cellNum = 0; cellNum < 10; cellNum++) {
+                Cell cell = row.createCell(cellNum);
+                cell.setCellValue(cellNum);
+            }
+        }
+        System.out.println("over");
+
+        FileOutputStream fileOutputStream = new FileOutputStream("/Users/chenjie/Desktop/home/java/POI/poi/陈杰万岁bigData07pluse.xlsx");
+        workbook.write(fileOutputStream);
+        fileOutputStream.close();
+        // 清除临时文件
+        ((SXSSFWorkbook) workbook).dispose();
+        workbook.close();
+        long end = System.currentTimeMillis();
+
+        System.out.println((double) (end-begin) /1000);   // 2.009s
+
+    }
+
+
+
 
 }
