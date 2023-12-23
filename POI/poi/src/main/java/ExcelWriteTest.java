@@ -1,16 +1,13 @@
-import org.apache.poi.hssf.usermodel.HSSFRow;
-import org.apache.poi.hssf.usermodel.HSSFSheet;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.hssf.usermodel.*;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.joda.time.DateTime;
 import org.junit.jupiter.api.Test;
 
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -187,6 +184,126 @@ public class ExcelWriteTest {
 
     }
 
+
+    @Test
+    public void readExcel03() throws Exception {
+        // 流
+        FileInputStream fileInputStream = new FileInputStream("/Users/chenjie/Desktop/home/java/POI/poi/陈杰万岁03.xls");
+
+        Workbook workbook = new HSSFWorkbook(fileInputStream);
+
+        Sheet sheet = workbook.getSheetAt(0);
+
+        Row row = sheet.getRow(0);
+
+        Cell cell = row.getCell(0);
+
+        // 获取数值的时候注意类型
+        System.out.println(cell.getStringCellValue());  // 观众人数统计
+
+        // 关闭流
+        fileInputStream.close();
+        workbook.close();
+    }
+
+
+    @Test
+    public void readExcel07() throws Exception {
+        // 流
+        FileInputStream fileInputStream = new FileInputStream("/Users/chenjie/Desktop/home/java/POI/poi/陈杰万岁07.xlsx");
+
+        Workbook workbook = new XSSFWorkbook(fileInputStream);
+
+        Sheet sheet = workbook.getSheetAt(0);
+
+        Row row = sheet.getRow(0);
+
+        Cell cell = row.getCell(0);
+
+        // 获取数值的时候注意类型
+        System.out.println(cell.getStringCellValue());  // 观众人数统计
+
+        // 关闭流
+        fileInputStream.close();
+        workbook.close();
+    }
+
+
+
+    @Test
+    public void readExcelType() throws Exception {
+        FileInputStream fileInputStream = new FileInputStream("/Users/chenjie/Desktop/home/java/POI/poi/明细表.xls");
+
+        Workbook workbook = new HSSFWorkbook(fileInputStream);
+        Sheet sheet = workbook.getSheetAt(0);
+        Row titleRow = sheet.getRow(0);
+
+        // 读取标题
+        if (titleRow!=null) {
+            int cellCount = titleRow.getPhysicalNumberOfCells();
+            for (int i = 0; i < cellCount; i++) {
+                Cell cell = titleRow.getCell(i);
+                String stringCellValue = cell.getStringCellValue();
+                System.out.print(stringCellValue + "|");
+            }
+            System.out.println();
+        }
+
+        // 读取内容
+        int rowCount = sheet.getPhysicalNumberOfRows();
+
+        for (int i = 1; i < rowCount; i++) {
+
+            Row row = sheet.getRow(i);
+            if (row != null) {
+                int cellCount = row.getPhysicalNumberOfCells();
+                // 每一个单元格
+                for (int j = 0; j < cellCount; j++) {
+                    Cell cell = row.getCell(j);
+                    String result = "";
+
+                    System.out.print("【"+(i+1)+","+(j+1)+"】");
+
+                    if (cell != null) {
+                        // 判断类型
+                        switch (cell.getCellType()) {
+                            case STRING:
+                                System.out.print("[STRING]");
+                                result = cell.getStringCellValue();
+                                break;
+                            case NUMERIC:
+                                System.out.print("[NUMERIC]");  // 数字（日期、普通数字）
+
+                                // 日期
+                                if (DateUtil.isCellDateFormatted(cell)) {
+                                    System.out.print("[DATE]");
+                                    result = new DateTime(cell.getDateCellValue()).toString("yyyy-MM-dd");
+                                } else {
+                                    System.out.print("[NUMBER]");
+                                    result = String.valueOf(cell.getNumericCellValue());
+                                }
+                                break;
+                            case BLANK:
+                                System.out.print("[BLANK]");
+                                break;
+                            case BOOLEAN:
+                                System.out.print("[BOOLEAN]");
+                                result = String.valueOf(cell.getBooleanCellValue());
+                                break;
+                        }
+                    }
+
+                    System.out.println(result);
+                }
+
+            }
+
+        }
+
+
+        fileInputStream.close();
+        workbook.close();
+    }
 
 
 
